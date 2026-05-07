@@ -1,12 +1,382 @@
-<!doctype html><html class="theme-next mist" lang="zh-Hans"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1"><meta http-equiv="Cache-Control" content="no-transform"><meta http-equiv="Cache-Control" content="no-siteapp"><meta name="google-site-verification" content="KU-zHjCeOFXtwziC4xIJCpZxfOsW5gJUZ7cr7WxLORo"><link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css"><link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css"><meta name="keywords" content="Partition,C++,Python,整数分拆,数论,"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.0"><meta name="description" content="POJ 1032 是一个数论问题：给定一个正整数 \(n \geq 5\)，求一个整数数列 \(A = (a_1,a_2, \cdots, a_k)\)，满足 \(\sum_i a_i = n\) 和 \(0 &amp;lt; a_1 &amp;lt; a_2 &amp;lt; \cdots &amp;lt; a_k\)，且 \(\prod_i a_i\)最大。\(A\) 有以下性质：1. \(a_1 &amp;gt; 1\)，因为 \"><meta property="og:type" content="article"><meta property="og:title" content="整数分拆使乘积最大"><meta property="og:url" content="https://moilaird.github.io/2017/04/integer-partition/index.html"><meta property="og:site_name" content="Laird's Notes"><meta property="og:description" content="POJ 1032 是一个数论问题：给定一个正整数 \(n \geq 5\)，求一个整数数列 \(A = (a_1,a_2, \cdots, a_k)\)，满足 \(\sum_i a_i = n\) 和 \(0 &amp;lt; a_1 &amp;lt; a_2 &amp;lt; \cdots &amp;lt; a_k\)，且 \(\prod_i a_i\)最大。\(A\) 有以下性质：1. \(a_1 &amp;gt; 1\)，因为 \"><meta property="og:updated_time" content="2017-04-19T12:48:17.119Z"><meta name="twitter:card" content="summary"><meta name="twitter:title" content="整数分拆使乘积最大"><meta name="twitter:description" content="POJ 1032 是一个数论问题：给定一个正整数 \(n \geq 5\)，求一个整数数列 \(A = (a_1,a_2, \cdots, a_k)\)，满足 \(\sum_i a_i = n\) 和 \(0 &amp;lt; a_1 &amp;lt; a_2 &amp;lt; \cdots &amp;lt; a_k\)，且 \(\prod_i a_i\)最大。\(A\) 有以下性质：1. \(a_1 &amp;gt; 1\)，因为 \"><script type="text/javascript" id="hexo.configurations">var NexT=window.NexT||{},CONFIG={root:"/",scheme:"Mist",sidebar:{position:"left",display:"post",offset:12,offset_float:0,b2t:!1,scrollpercent:!1},fancybox:!1,motion:!1,duoshuo:{userId:"0",author:"博主"},algolia:{applicationID:"",apiKey:"",indexName:"",hits:{per_page:10},labels:{input_placeholder:"Search for Posts",hits_empty:"We didn't find any results for the search: ${query}",hits_stats:"${hits} results found in ${time} ms"}}}</script><link rel="canonical" href="https://moilaird.github.io/2017/04/integer-partition/"><title>整数分拆使乘积最大 | Laird's Notes</title></head><body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans"><div class="container sidebar-position-left page-post-detail"><div class="headband"></div><header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="header-inner"><div class="site-brand-wrapper"><div class="site-meta"><div class="custom-logo-site-title"><a href="/" class="brand" rel="start"><span class="logo-line-before"><i></i></span> <span class="site-title">Laird's Notes</span> <span class="logo-line-after"><i></i></span></a></div><h1 class="site-subtitle" itemprop="description">on Math and Programming</h1></div><div class="site-nav-toggle"><button><span class="btn-bar"></span> <span class="btn-bar"></span> <span class="btn-bar"></span></button></div></div><nav class="site-nav"><ul id="menu" class="menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i><br>首页</a></li><li class="menu-item menu-item-archives"><a href="/archives" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i><br>归档</a></li><li class="menu-item menu-item-tags"><a href="/tags" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i><br>标签</a></li></ul></nav></div></header><main id="main" class="main"><div class="main-inner"><div class="content-wrap"><div id="content" class="content"><div id="posts" class="posts-expand"><article class="post post-type-normal" itemscope itemtype="http://schema.org/Article"><link itemprop="mainEntityOfPage" href="https://moilaird.github.io/2017/04/integer-partition/"><span hidden itemprop="author" itemscope itemtype="http://schema.org/Person"><meta itemprop="name" content="moiLaird"><meta itemprop="description" content="不积跬步，无以致千里"><meta itemprop="image" content="/img/wall_e.png"></span><span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization"><meta itemprop="name" content="Laird's Notes"></span><header class="post-header"><h2 class="post-title" itemprop="name headline">整数分拆使乘积最大</h2><div class="post-meta"><span class="post-time"><span class="post-meta-item-icon"><i class="fa fa-calendar-o"></i> </span><span class="post-meta-item-text">发表于</span> <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-04-12T01:35:47+08:00">2017-04-12 </time></span><span class="post-category"><span class="post-meta-divider">|</span> <span class="post-meta-item-icon"><i class="fa fa-folder-o"></i> </span><span class="post-meta-item-text">分类于</span> <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/OJ/" itemprop="url" rel="index"><span itemprop="name">OJ</span> </a></span></span><span class="post-comments-count"><span class="post-meta-divider">|</span> <span class="post-meta-item-icon"><i class="fa fa-comment-o"></i> </span><a href="/2017/04/integer-partition/#comments" itemprop="discussionUrl"><span class="post-comments-count disqus-comment-count" data-disqus-identifier="2017/04/integer-partition/" itemprop="commentCount"></span> </a></span><span class="post-meta-divider">|</span> <span class="page-pv"><i class="fa fa-eye"></i> <span class="busuanzi-value" id="busuanzi_value_page_pv"></span>Views</span></div></header><div class="post-body" itemprop="articleBody"><p><a href="http://poj.org/problem?id=1032" target="_blank" rel="external">POJ 1032</a> 是一个数论问题：给定一个正整数 <span class="math inline">\(n \geq 5\)</span>，求一个整数数列 <span class="math inline">\(A = (a_1,a_2, \cdots, a_k)\)</span>，满足 <span class="math inline">\(\sum_i a_i = n\)</span> 和 <span class="math inline">\(0 &lt; a_1 &lt; a_2 &lt; \cdots &lt; a_k\)</span>，且 <span class="math inline">\(\prod_i a_i\)</span>最大。</p><p><span class="math inline">\(A\)</span> 有以下性质：<br>1. <span class="math inline">\(a_1 &gt; 1\)</span>，因为 <span class="math inline">\(1 \cdot a_i &lt; 1 + a_i\)</span><br>2. <span class="math inline">\(a_1 \leq 3\)</span>，因为如果 <span class="math inline">\(a_1 &gt; 3, a_1 \cdot a_2 &lt; 2 \cdot (a_1 - 1) \cdot (a_2 - 1)\)</span><br>3. 项数尽可能多，因为 <span class="math inline">\(2 \leq a_p &lt; a_q, a_p + a_q &lt; a_p \cdot a_q\)</span></p><a id="more"></a><p>猜想 <span class="math inline">\(A\)</span> 的形式接近 <span class="math inline">\(T = (2, 3, \cdots, m)\)</span>。<br>记 <span class="math inline">\(T(m) = \sum_{i=2}^m i = \frac{m(m+1)}{2} - 1\)</span>，存在唯一的 <span class="math inline">\(m = \lfloor \frac{\sqrt{8n+9} - 1}{2} \rfloor\)</span> 使得 <span class="math inline">\(T(m) \leq n &lt; T(m+1)\)</span>。设 <span class="math inline">\(n = T(m) + l, 0 \leq l \leq m\)</span>。</p><p>用<span class="math inline">\(\{T\}\)</span>表示数列<span class="math inline">\(T\)</span>的各项组成的有序集合，即 <span class="math inline">\(\{T\} = \{2, 3, \cdots, m\}\)</span>。<br><a href="https://cs.uwaterloo.ca/journals/JIS/VOL8/Doslic/doslic15.html" target="_blank" rel="external">Maximum Product Over Partitions Into Distinct Parts</a> 这篇论文证明了所求数列（用集合表示）为 <span class="math display">\[ \{A\} = \begin{cases} \{T\} &amp; , &amp; l = 0\\ \{T\} - \{2\} + \{m+2\} &amp; , &amp; l = m\\ \{T\} - \{m-l+1\} + \{m+1\} &amp; , &amp; 1 \leq l \leq m-1 \end{cases} \]</span> 数列长度为 <span class="math inline">\(m-1\)</span>。即将 <span class="math inline">\(l\)</span> 个1分别加到 <span class="math inline">\(T\)</span> 的倒数 <span class="math inline">\(l\)</span> 项，其中 <span class="math inline">\(l = m\)</span> 时多出一个1加到最后一项。</p><p>C++代码实现如下。</p><figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cmath&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;set&gt;</span></span></div><div class="line"></div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</div><div class="line">    <span class="keyword">int</span> n, m, Tm, l;</div><div class="line">    <span class="built_in">std</span>::<span class="built_in">set</span>&lt;<span class="keyword">int</span>&gt; A;</div><div class="line">    <span class="built_in">std</span>::<span class="built_in">cin</span> &gt;&gt; n;</div><div class="line"></div><div class="line">    m = <span class="keyword">static_cast</span>&lt;<span class="keyword">int</span>&gt; ((<span class="built_in">sqrt</span>(<span class="number">8</span> * n + <span class="number">9</span>) - <span class="number">1</span>) / <span class="number">2.0</span>);</div><div class="line">    Tm = m * (m + <span class="number">1</span>) / <span class="number">2</span> - <span class="number">1</span>;</div><div class="line">    l = n - Tm;</div><div class="line"></div><div class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">2</span>; i &lt;= m; ++i) &#123;</div><div class="line">        A.insert(i);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="keyword">if</span> (l &gt; <span class="number">0</span>) &#123;</div><div class="line">        <span class="keyword">if</span> (l == m) &#123;</div><div class="line">            A.erase(<span class="number">2</span>);</div><div class="line">            A.insert(m + <span class="number">2</span>);</div><div class="line">        &#125; <span class="keyword">else</span> &#123;</div><div class="line">            A.erase(m - l + <span class="number">1</span>);</div><div class="line">            A.insert(m + <span class="number">1</span>);</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="keyword">for</span> (<span class="keyword">auto</span> el : A) &#123;</div><div class="line">        <span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; el &lt;&lt; <span class="string">' '</span>;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure><p></p><hr><p><strong>Update</strong></p><p>发现 <a href="http://acm.zju.edu.cn/onlinejudge/showProblem.do?problemCode=2037" target="_blank" rel="external">ZOJ 2037</a> 是同一题，不过输入包含多个 case。<br>ZOJ 支持 Python。我有点好奇 Python 比 C/C++ 慢多少，于是提交了以下代码。</p><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">from</span> math <span class="keyword">import</span> sqrt</div><div class="line"><span class="keyword">from</span> sys <span class="keyword">import</span> stdin, stdout</div><div class="line"></div><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">part</span><span class="params">(n)</span>:</span></div><div class="line">    m = int((sqrt(<span class="number">8</span> * n + <span class="number">9</span>) - <span class="number">1</span>) / <span class="number">2</span>)</div><div class="line">    tm = m * (m + <span class="number">1</span>) // <span class="number">2</span> - <span class="number">1</span></div><div class="line">    l = n - tm</div><div class="line">    a = list(range(<span class="number">2</span>, m + <span class="number">1</span>))</div><div class="line">    <span class="keyword">if</span> l &gt; <span class="number">0</span>:</div><div class="line">        <span class="keyword">if</span> l == m:</div><div class="line">            <span class="keyword">del</span> a[<span class="number">0</span>]</div><div class="line">            a.append(m + <span class="number">2</span>)</div><div class="line">        <span class="keyword">else</span>:</div><div class="line">            <span class="keyword">del</span> a[m - l - <span class="number">1</span>]</div><div class="line">            a.append(m + <span class="number">1</span>)</div><div class="line">    <span class="keyword">return</span> <span class="string">' '</span>.join(map(str, a))</div><div class="line"></div><div class="line"></div><div class="line">data = map(int, stdin.read().split()[<span class="number">1</span>:])</div><div class="line">stdout.write(<span class="string">'\n\n'</span>.join(part(x) <span class="keyword">for</span> x <span class="keyword">in</span> data))</div></pre></td></tr></table></figure><p>结果是 AC，Time 0 ms，Memory 144 KB。咦，排在 C 前面？<br>然而我再重复了几次，Time 都是 10 ms。看来不用太纠结那么多 0 ms 怎么来的～</p><hr><p><strong>相关问题</strong></p><ul><li>IMO 1976/4. Determine the largest number which is the product of positive integers with sum 1976. (Answer: <span class="math inline">\(1976 = 3 \cdot 658 + 2, M = 2 \cdot 3^{658}\)</span>)</li><li><a href="https://leetcode.com/problems/integer-break" target="_blank" rel="external">LeetCode 343. Integer Break</a></li><li><a href="https://projecteuler.net/problem=374" target="_blank" rel="external">Project Euler Problem 374. Maximum Integer Partition Product</a></li></ul><hr><p><strong>附件</strong></p><ul><li><a href="/files/NEERC-1998-D.RTF">NEERC 1998 Problem D</a></li><li><a href="/files/PARLIAM.PAS">Sample Solution</a></li></ul></div><div></div><div></div><div><ul class="post-copyright"><li class="post-copyright-author"><strong>本文作者：</strong> moiLaird</li><li class="post-copyright-link"><strong>本文链接：</strong> <a href="https://moilaird.github.io/2017/04/integer-partition/" title="整数分拆使乘积最大">https://moilaird.github.io/2017/04/integer-partition/</a></li><li class="post-copyright-license"><strong>版权声明： </strong>本文采用 <a href="https://creativecommons.org/licenses/by-nc-nd/4.0" rel="external nofollow" target="_blank">CC BY-NC-ND 4.0</a> 许可协议，转载请注明出处。</li></ul></div><footer class="post-footer"><div class="post-tags"><a href="/tags/Partition/" rel="tag"># Partition</a> <a href="/tags/C/" rel="tag"># C++</a> <a href="/tags/Python/" rel="tag"># Python</a> <a href="/tags/整数分拆/" rel="tag"># 整数分拆</a> <a href="/tags/数论/" rel="tag"># 数论</a></div><div class="post-nav"><div class="post-nav-next post-nav-item"><a href="/2017/04/ubuntu-blank-desktop/" rel="next" title="Ubuntu 16.04登录后桌面只显示壁纸的解决办法"><i class="fa fa-chevron-left"></i> Ubuntu 16.04登录后桌面只显示壁纸的解决办法</a></div><span class="post-nav-divider"></span><div class="post-nav-prev post-nav-item"></div></div></footer></article><div class="post-spread"></div></div></div><div class="comments" id="comments"><div id="disqus_thread"><noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript></div></div></div><div class="sidebar-toggle"><div class="sidebar-toggle-line-wrap"><span class="sidebar-toggle-line sidebar-toggle-line-first"></span> <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span> <span class="sidebar-toggle-line sidebar-toggle-line-last"></span></div></div><aside id="sidebar" class="sidebar"><div class="sidebar-inner"><section class="site-overview sidebar-panel sidebar-panel-active"><div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person"><img class="site-author-image" itemprop="image" src="/img/wall_e.png" alt="moiLaird"><p class="site-author-name" itemprop="name">moiLaird</p><p class="site-description motion-element" itemprop="description">不积跬步，无以致千里</p></div><nav class="site-state motion-element"><div class="site-state-item site-state-posts"><a href="/archives"><span class="site-state-item-count">5</span> <span class="site-state-item-name">日志</span></a></div><div class="site-state-item site-state-categories"><a href="/categories/index.html"><span class="site-state-item-count">5</span> <span class="site-state-item-name">分类</span></a></div><div class="site-state-item site-state-tags"><a href="/tags/index.html"><span class="site-state-item-count">24</span> <span class="site-state-item-name">标签</span></a></div></nav><div class="links-of-author motion-element"></div></section></div></aside></div></main><footer id="footer" class="footer"><div class="footer-inner"><div class="copyright">&copy; <span itemprop="copyrightYear">2017</span> <span class="with-love"><i class="fa fa-heart"></i> </span><span class="author" itemprop="copyrightHolder">moiLaird</span></div><div class="powered-by">由 <a class="theme-link" href="https://hexo.io" rel="external nofollow">Hexo</a> 强力驱动</div><div class="theme-info">主题 - <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next" rel="external nofollow">NexT.Mist</a></div><div class="busuanzi-count"><script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></div></footer><div class="back-to-top"><i class="fa fa-arrow-up"></i></div></div><script type="text/javascript">"[object Function]"!==Object.prototype.toString.call(window.Promise)&&(window.Promise=null)</script><script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script><script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script><script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script><script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script><script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script><script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script><script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script><script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script><script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script><script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script><script id="dsq-count-scr" src="https://moilaird.disqus.com/count.js" async></script><script type="text/javascript">var disqus_config=function(){this.page.url="https://moilaird.github.io/2017/04/integer-partition/",this.page.identifier="2017/04/integer-partition/",this.page.title="整数分拆使乘积最大"},d=document,s=d.createElement("script");s.src="https://moilaird.disqus.com/embed.js",s.setAttribute("data-timestamp",""+ +new Date),(d.head||d.body).appendChild(s)</script><script type="text/x-mathjax-config">MathJax.Hub.Config({
-        tex2jax: {
-          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
-          processEscapes: true,
-          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
-        }
-      });</script><script type="text/x-mathjax-config">MathJax.Hub.Queue(function() {
-        var all = MathJax.Hub.getAllJax(), i;
-        for (i=0; i < all.length; i += 1) {
-          all[i].SourceElement().parentNode.className += ' has-jax';
-        }
-      });</script><script type="text/javascript" async src="//cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS_CHTML"></script></body></html>
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)"><meta name="generator" content="Hexo 8.1.2">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon.ico">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon.ico">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css" integrity="sha256-VHqXKFhhMxcpubYf9xiWdCiojEbY9NexQ4jh8AxbvcM=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"moilaird.github.io","root":"/","images":"/images","scheme":"Mist","darkmode":true,"version":"8.27.0","exturl":false,"sidebar":{"position":"right","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12,"onmobile":false},"hljswrap":true,"codeblock":{"theme":{"light":"default","dark":"stackoverflow-dark"},"prism":{"light":"prism","dark":"prism-dark"},"copy_button":{"enable":false,"style":null},"fold":{"enable":false,"height":500},"language":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":false,"async":false,"duration":200,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}}</script><script src="/js/config.js" defer></script>
+
+    <meta name="description" content="POJ 1032 是一个数论问题：给定一个正整数 \(n \geq 5\)，求一个整数数列 \(A &#x3D; (a_1,a_2, \cdots, a_k)\)，满足 \(\sum_i a_i &#x3D; n\) 和 \(0 &lt; a_1 &lt; a_2 &lt; \cdots &lt; a_k\)，且 \(\prod_i a_i\)最大。 \(A\) 有以下性质： 1. \(a_1 &gt; 1\)，">
+<meta property="og:type" content="article">
+<meta property="og:title" content="整数分拆使乘积最大">
+<meta property="og:url" content="https://moilaird.github.io/2017/04/integer-partition/index.html">
+<meta property="og:site_name" content="Laird Notes">
+<meta property="og:description" content="POJ 1032 是一个数论问题：给定一个正整数 \(n \geq 5\)，求一个整数数列 \(A &#x3D; (a_1,a_2, \cdots, a_k)\)，满足 \(\sum_i a_i &#x3D; n\) 和 \(0 &lt; a_1 &lt; a_2 &lt; \cdots &lt; a_k\)，且 \(\prod_i a_i\)最大。 \(A\) 有以下性质： 1. \(a_1 &gt; 1\)，">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2017-04-11T17:35:47.000Z">
+<meta property="article:modified_time" content="2017-04-19T12:48:18.000Z">
+<meta property="article:author" content="moiLaird">
+<meta property="article:tag" content="C++">
+<meta property="article:tag" content="Partition">
+<meta property="article:tag" content="Python">
+<meta property="article:tag" content="数论">
+<meta property="article:tag" content="整数分拆">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="https://moilaird.github.io/2017/04/integer-partition/">
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://moilaird.github.io/2017/04/integer-partition/","path":"2017/04/integer-partition/","title":"整数分拆使乘积最大"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>整数分拆使乘积最大 | Laird Notes</title>
+  
+
+
+
+
+
+
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous" defer></script>
+<script src="/js/utils.js" defer></script><script src="/js/sidebar.js" defer></script><script src="/js/next-boot.js" defer></script>
+
+  
+
+
+
+
+
+
+  
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">true</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"none","js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.js","integrity":"sha256-MASABpB4tYktI2Oitl4t+78w/lyA+D7b/s9GEP0JOGI="}}</script>
+<script src="/js/third-party/math/mathjax.js" defer></script>
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+<link rel="alternate" href="/atom.xml" title="Laird Notes" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">Laird Notes</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">on Life and Learning</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜索" role="button">
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a></li><li class="menu-item menu-item-rss"><a href="/atom.xml" rel="section"><i class="fa fa-rss fa-fw"></i>RSS</a></li>
+  </ul>
+</nav>
+
+
+
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-overview-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="moiLaird"
+      src="/img/wall_e.png">
+  <p class="site-author-name" itemprop="name">moiLaird</p>
+  <div class="site-description" itemprop="description">不积跬步，无以致千里</div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">5</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">5</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">24</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://moilaird.github.io/2017/04/integer-partition/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/img/wall_e.png">
+      <meta itemprop="name" content="moiLaird">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Laird Notes">
+      <meta itemprop="description" content="不积跬步，无以致千里">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="整数分拆使乘积最大 | Laird Notes">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          整数分拆使乘积最大
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2017-04-12 01:35:47" itemprop="dateCreated datePublished" datetime="2017-04-12T01:35:47+08:00">2017-04-12</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/OJ/" itemprop="url" rel="index"><span itemprop="name">OJ</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">阅读次数：</span>
+      <span id="busuanzi_value_page_pv"></span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><p><a target="_blank" rel="noopener" href="http://poj.org/problem?id=1032">POJ 1032</a> 是一个数论问题：给定一个正整数 <span class="math inline">\(n \geq 5\)</span>，求一个整数数列 <span class="math inline">\(A = (a_1,a_2, \cdots, a_k)\)</span>，满足 <span class="math inline">\(\sum_i a_i = n\)</span> 和 <span class="math inline">\(0 &lt; a_1 &lt; a_2 &lt; \cdots &lt; a_k\)</span>，且 <span class="math inline">\(\prod_i a_i\)</span>最大。</p>
+<p><span class="math inline">\(A\)</span> 有以下性质：<br />
+1. <span class="math inline">\(a_1 &gt; 1\)</span>，因为 <span class="math inline">\(1 \cdot a_i &lt; 1 + a_i\)</span><br />
+2. <span class="math inline">\(a_1 \leq 3\)</span>，因为如果 <span class="math inline">\(a_1 &gt;  3, a_1 \cdot a_2 &lt; 2  \cdot (a_1 - 1) \cdot (a_2 - 1)\)</span><br />
+3. 项数尽可能多，因为 <span class="math inline">\(2 \leq a_p &lt; a_q, a_p + a_q &lt; a_p \cdot a_q\)</span></p>
+<span id="more"></span>
+<p>猜想 <span class="math inline">\(A\)</span> 的形式接近 <span class="math inline">\(T = (2, 3, \cdots, m)\)</span>。<br />
+记 <span class="math inline">\(T(m) = \sum_{i=2}^m i = \frac{m(m+1)}{2} - 1\)</span>，存在唯一的 <span class="math inline">\(m = \lfloor \frac{\sqrt{8n+9} - 1}{2} \rfloor\)</span> 使得 <span class="math inline">\(T(m) \leq n &lt; T(m+1)\)</span>。设 <span class="math inline">\(n = T(m) + l, 0 \leq l \leq m\)</span>。</p>
+<p>用<span class="math inline">\(\{T\}\)</span>表示数列<span class="math inline">\(T\)</span>的各项组成的有序集合，即 <span class="math inline">\(\{T\} = \{2, 3, \cdots, m\}\)</span>。<br />
+<a target="_blank" rel="noopener" href="https://cs.uwaterloo.ca/journals/JIS/VOL8/Doslic/doslic15.html">Maximum Product Over Partitions Into Distinct Parts</a> 这篇论文证明了所求数列（用集合表示）为 <span class="math display">\[
+\{A\} = \begin{cases}
+\{T\} &amp; , &amp; l = 0\\
+\{T\} - \{2\} + \{m+2\} &amp; , &amp; l = m\\
+\{T\} - \{m-l+1\} + \{m+1\} &amp; , &amp; 1 \leq l \leq m-1
+\end{cases}
+\]</span> 数列长度为 <span class="math inline">\(m-1\)</span>。即将 <span class="math inline">\(l\)</span> 个1分别加到 <span class="math inline">\(T\)</span> 的倒数 <span class="math inline">\(l\)</span> 项，其中 <span class="math inline">\(l = m\)</span> 时多出一个1加到最后一项。</p>
+<p>C++代码实现如下。 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;cmath&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;set&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="type">int</span> n, m, Tm, l;</span><br><span class="line">    std::set&lt;<span class="type">int</span>&gt; A;</span><br><span class="line">    std::cin &gt;&gt; n;</span><br><span class="line"></span><br><span class="line">    m = <span class="built_in">static_cast</span>&lt;<span class="type">int</span>&gt; ((<span class="built_in">sqrt</span>(<span class="number">8</span> * n + <span class="number">9</span>) - <span class="number">1</span>) / <span class="number">2.0</span>);</span><br><span class="line">    Tm = m * (m + <span class="number">1</span>) / <span class="number">2</span> - <span class="number">1</span>;</span><br><span class="line">    l = n - Tm;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">2</span>; i &lt;= m; ++i) &#123;</span><br><span class="line">        A.<span class="built_in">insert</span>(i);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (l &gt; <span class="number">0</span>) &#123;</span><br><span class="line">        <span class="keyword">if</span> (l == m) &#123;</span><br><span class="line">            A.<span class="built_in">erase</span>(<span class="number">2</span>);</span><br><span class="line">            A.<span class="built_in">insert</span>(m + <span class="number">2</span>);</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            A.<span class="built_in">erase</span>(m - l + <span class="number">1</span>);</span><br><span class="line">            A.<span class="built_in">insert</span>(m + <span class="number">1</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">auto</span> el : A) &#123;</span><br><span class="line">        std::cout &lt;&lt; el &lt;&lt; <span class="string">&#x27; &#x27;</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<hr />
+<p><strong>Update</strong></p>
+<p>发现 <a target="_blank" rel="noopener" href="http://acm.zju.edu.cn/onlinejudge/showProblem.do?problemCode=2037">ZOJ 2037</a> 是同一题，不过输入包含多个 case。<br />
+ZOJ 支持 Python。我有点好奇 Python 比 C/C++ 慢多少，于是提交了以下代码。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> math <span class="keyword">import</span> sqrt</span><br><span class="line"><span class="keyword">from</span> sys <span class="keyword">import</span> stdin, stdout</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">part</span>(<span class="params">n</span>):</span><br><span class="line">    m = <span class="built_in">int</span>((sqrt(<span class="number">8</span> * n + <span class="number">9</span>) - <span class="number">1</span>) / <span class="number">2</span>)</span><br><span class="line">    tm = m * (m + <span class="number">1</span>) // <span class="number">2</span> - <span class="number">1</span></span><br><span class="line">    l = n - tm</span><br><span class="line">    a = <span class="built_in">list</span>(<span class="built_in">range</span>(<span class="number">2</span>, m + <span class="number">1</span>))</span><br><span class="line">    <span class="keyword">if</span> l &gt; <span class="number">0</span>:</span><br><span class="line">        <span class="keyword">if</span> l == m:</span><br><span class="line">            <span class="keyword">del</span> a[<span class="number">0</span>]</span><br><span class="line">            a.append(m + <span class="number">2</span>)</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            <span class="keyword">del</span> a[m - l - <span class="number">1</span>]</span><br><span class="line">            a.append(m + <span class="number">1</span>)</span><br><span class="line">    <span class="keyword">return</span> <span class="string">&#x27; &#x27;</span>.join(<span class="built_in">map</span>(<span class="built_in">str</span>, a))</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">data = <span class="built_in">map</span>(<span class="built_in">int</span>, stdin.read().split()[<span class="number">1</span>:])</span><br><span class="line">stdout.write(<span class="string">&#x27;\n\n&#x27;</span>.join(part(x) <span class="keyword">for</span> x <span class="keyword">in</span> data))</span><br></pre></td></tr></table></figure>
+<p>结果是 AC，Time 0 ms，Memory 144 KB。咦，排在 C 前面？<br />
+然而我再重复了几次，Time 都是 10 ms。看来不用太纠结那么多 0 ms 怎么来的～</p>
+<hr />
+<p><strong>相关问题</strong></p>
+<ul>
+<li>IMO 1976/4. Determine the largest number which is the product of positive integers with sum 1976. (Answer: <span class="math inline">\(1976 = 3 \cdot 658 + 2, M = 2 \cdot 3^{658}\)</span>)</li>
+<li><a target="_blank" rel="noopener" href="https://leetcode.com/problems/integer-break">LeetCode 343. Integer Break</a></li>
+<li><a target="_blank" rel="noopener" href="https://projecteuler.net/problem=374">Project Euler Problem 374. Maximum Integer Partition Product</a></li>
+</ul>
+<hr />
+<p><strong>附件</strong></p>
+<ul>
+<li><a href="/files/NEERC-1998-D.RTF">NEERC 1998 Problem D</a></li>
+<li><a href="/files/PARLIAM.PAS">Sample Solution</a></li>
+</ul>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          
+
+<div class="post-copyright">
+<ul>
+  <li class="post-copyright-author">
+      <strong>本文作者： </strong>moiLaird
+  </li>
+  <li class="post-copyright-link">
+      <strong>本文链接：</strong>
+      <a href="https://moilaird.github.io/2017/04/integer-partition/" title="整数分拆使乘积最大">https://moilaird.github.io/2017/04/integer-partition/</a>
+  </li>
+  <li class="post-copyright-license">
+      <strong>版权声明： </strong>本文采用 <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/" rel="noopener external nofollow" target="_blank">CC BY-NC-ND 4.0</a> 许可协议，转载请注明出处。
+  </li>
+</ul>
+</div>
+
+          <div class="post-tags">
+              <a href="/tags/Partition/" rel="tag"># Partition</a>
+              <a href="/tags/C/" rel="tag"># C++</a>
+              <a href="/tags/Python/" rel="tag"># Python</a>
+              <a href="/tags/%E6%95%B4%E6%95%B0%E5%88%86%E6%8B%86/" rel="tag"># 整数分拆</a>
+              <a href="/tags/%E6%95%B0%E8%AE%BA/" rel="tag"># 数论</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2017/04/ubuntu-blank-desktop/" rel="prev" title="Ubuntu登录后只显示壁纸的修复方法">
+                  <i class="fa fa-angle-left"></i> Ubuntu登录后只显示壁纸的修复方法
+                </a>
+            </div>
+            <div class="post-nav-item">
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 2017 – 
+    <span itemprop="copyrightYear">2026</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">moiLaird</span>
+  </div>
+<div class="busuanzi-count">
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/mist/" rel="noopener" target="_blank">NexT.Mist</a> 强力驱动
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+</body>
+</html>
