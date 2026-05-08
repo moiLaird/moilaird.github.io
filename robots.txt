@@ -1,8 +1,3 @@
 User-Agent: *
 Allow: /
-Disallow: /css/
-Disallow: /images/
-Disallow: /js/
-Disallow: /lib/
-
 Sitemap: https://moilaird.github.io/sitemap.xml
