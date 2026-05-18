@@ -2,7 +2,7 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>https://moilaird.github.io/2026/05/rubik-cube-revisit/</loc>
+    <loc>https://moilaird.github.io/2026/05/cube-solver-wechat/</loc>
     
     <lastmod>2026-05-18</lastmod>
     
@@ -11,7 +11,7 @@
   </url>
   
   <url>
-    <loc>https://moilaird.github.io/2026/05/cube-solver-wechat/</loc>
+    <loc>https://moilaird.github.io/2026/05/rubik-cube-revisit/</loc>
     
     <lastmod>2026-05-18</lastmod>
     
@@ -164,41 +164,6 @@
   </url>
   
   <url>
-    <loc>https://moilaird.github.io/tags/Pi/</loc>
-    <lastmod>2026-05-18</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://moilaird.github.io/tags/%E5%9C%86%E5%91%A8%E7%8E%87/</loc>
-    <lastmod>2026-05-18</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://moilaird.github.io/tags/%E7%BA%A7%E6%95%B0/</loc>
-    <lastmod>2026-05-18</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://moilaird.github.io/tags/%E7%A7%AF%E5%88%86/</loc>
-    <lastmod>2026-05-18</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://moilaird.github.io/tags/%E6%AC%A7%E6%8B%89%E5%8F%98%E6%8D%A2/</loc>
-    <lastmod>2026-05-18</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
     <loc>https://moilaird.github.io/tags/SQL/</loc>
     <lastmod>2026-05-18</lastmod>
     <changefreq>weekly</changefreq>
@@ -317,6 +282,41 @@
     <priority>0.2</priority>
   </url>
   
+  <url>
+    <loc>https://moilaird.github.io/tags/Pi/</loc>
+    <lastmod>2026-05-18</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://moilaird.github.io/tags/%E5%9C%86%E5%91%A8%E7%8E%87/</loc>
+    <lastmod>2026-05-18</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://moilaird.github.io/tags/%E7%BA%A7%E6%95%B0/</loc>
+    <lastmod>2026-05-18</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://moilaird.github.io/tags/%E7%A7%AF%E5%88%86/</loc>
+    <lastmod>2026-05-18</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://moilaird.github.io/tags/%E6%AC%A7%E6%8B%89%E5%8F%98%E6%8D%A2/</loc>
+    <lastmod>2026-05-18</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
 
   
   <url>
@@ -328,13 +328,6 @@
   
   <url>
     <loc>https://moilaird.github.io/categories/OJ/</loc>
-    <lastmod>2026-05-18</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://moilaird.github.io/categories/Mathematics/</loc>
     <lastmod>2026-05-18</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -356,6 +349,13 @@
   
   <url>
     <loc>https://moilaird.github.io/categories/Game/</loc>
+    <lastmod>2026-05-18</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://moilaird.github.io/categories/Mathematics/</loc>
     <lastmod>2026-05-18</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
