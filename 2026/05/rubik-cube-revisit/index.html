@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)"><meta name="generator" content="Hexo 8.1.2">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon.ico">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon.ico">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+  <meta name="google-site-verification" content="KU-zHjCeOFXtwziC4xIJCpZxfOsW5gJUZ7cr7WxLORo">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css" integrity="sha256-VHqXKFhhMxcpubYf9xiWdCiojEbY9NexQ4jh8AxbvcM=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"moilaird.github.io","root":"/","images":"/images","scheme":"Mist","darkmode":true,"version":"8.27.0","exturl":false,"sidebar":{"position":"right","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12,"onmobile":false},"hljswrap":true,"codeblock":{"theme":{"light":"default","dark":"stackoverflow-dark"},"prism":{"light":"prism","dark":"prism-dark"},"copy_button":{"enable":false,"style":null},"fold":{"enable":false,"height":500},"language":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":false,"async":false,"duration":200,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}}</script><script src="/js/config.js" defer></script>
+
+    <meta name="description" content="原文首发于微信公众号 Laird Notes，转载时排版略有调整。  春节回家时，翻出了十多年前的《魔方宝典》，纸张如今已泛黄。 三月初重新买了个魔方，才发现太久没玩，都已忘记还原的方法。 靠着尝试、搜索和回忆，慢慢找回感觉，也有些新发现。 又拖了一月，才勉强写下这篇备忘。  魔方基本概念 魔方（魔术方块）是匈牙利建筑学教授Rubik Ernő在1974年发明的智力玩具。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="重温三阶魔方">
+<meta property="og:url" content="https://moilaird.github.io/2026/05/rubik-cube-revisit/index.html">
+<meta property="og:site_name" content="Laird Notes">
+<meta property="og:description" content="原文首发于微信公众号 Laird Notes，转载时排版略有调整。  春节回家时，翻出了十多年前的《魔方宝典》，纸张如今已泛黄。 三月初重新买了个魔方，才发现太久没玩，都已忘记还原的方法。 靠着尝试、搜索和回忆，慢慢找回感觉，也有些新发现。 又拖了一月，才勉强写下这篇备忘。  魔方基本概念 魔方（魔术方块）是匈牙利建筑学教授Rubik Ernő在1974年发明的智力玩具。">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://moilaird.github.io/img/Rubik_Cube.jpg">
+<meta property="og:image" content="https://moilaird.github.io/img/Cube_Explorer.png">
+<meta property="og:image" content="https://moilaird.github.io/img/Pursuit_Happyness.png">
+<meta property="article:published_time" content="2026-05-17T15:46:35.000Z">
+<meta property="article:modified_time" content="2026-05-18T01:23:15.677Z">
+<meta property="article:author" content="moiLaird">
+<meta property="article:tag" content="Kociemba算法">
+<meta property="article:tag" content="电影">
+<meta property="article:tag" content="魔方">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://moilaird.github.io/img/Rubik_Cube.jpg">
+
+
+<link rel="canonical" href="https://moilaird.github.io/2026/05/rubik-cube-revisit/">
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://moilaird.github.io/2026/05/rubik-cube-revisit/","path":"2026/05/rubik-cube-revisit/","title":"重温三阶魔方"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>重温三阶魔方 | Laird Notes</title>
+  
+
+
+
+
+
+
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous" defer></script>
+<script src="/js/utils.js" defer></script><script src="/js/sidebar.js" defer></script><script src="/js/next-boot.js" defer></script>
+
+  
+
+
+
+
+
+
+  
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">false</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"none","js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.js","integrity":"sha256-MASABpB4tYktI2Oitl4t+78w/lyA+D7b/s9GEP0JOGI="}}</script>
+<script src="/js/third-party/math/mathjax.js" defer></script>
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+<link rel="alternate" href="/atom.xml" title="Laird Notes" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">Laird Notes</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">on Life and Learning</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜索" role="button">
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a></li><li class="menu-item menu-item-rss"><a href="/atom.xml" rel="section"><i class="fa fa-rss fa-fw"></i>RSS</a></li>
+  </ul>
+</nav>
+
+
+
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-overview-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="moiLaird"
+      src="/img/wall_e.png">
+  <p class="site-author-name" itemprop="name">moiLaird</p>
+  <div class="site-description" itemprop="description">不积跬步，无以致千里</div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">7</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">6</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">31</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://moilaird.github.io/2026/05/rubik-cube-revisit/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/img/wall_e.png">
+      <meta itemprop="name" content="moiLaird">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Laird Notes">
+      <meta itemprop="description" content="不积跬步，无以致千里">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="重温三阶魔方 | Laird Notes">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          重温三阶魔方
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2026-05-17 23:46:35" itemprop="dateCreated datePublished" datetime="2026-05-17T23:46:35+08:00">2026-05-17</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Game/" itemprop="url" rel="index"><span itemprop="name">Game</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">阅读次数：</span>
+      <span id="busuanzi_value_page_pv"></span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><blockquote>
+<p>原文首发于微信公众号 <a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s/8ao-vRIDXoSHCIEyDt6dJg">Laird Notes</a>，转载时排版略有调整。</p>
+</blockquote>
+<p>春节回家时，翻出了十多年前的《魔方宝典》，纸张如今已泛黄。</p>
+<p>三月初重新买了个魔方，才发现太久没玩，都已忘记还原的方法。</p>
+<p>靠着尝试、搜索和回忆，慢慢找回感觉，也有些新发现。</p>
+<p>又拖了一月，才勉强写下这篇备忘。</p>
+<hr />
+<p><strong>魔方基本概念</strong></p>
+<p>魔方（魔术方块）是匈牙利建筑学教授Rubik Ernő在1974年发明的智力玩具。</p>
+<span id="more"></span>
+<p>经典的三阶魔方有26个块：6个中心块、12个棱块、8个角块。</p>
+<p>6个面一般记为：顶面U、底面D、前面F、背面B、左面L、右面R。</p>
+<p>标准配色：白黄相对、红橙相对、蓝绿相对，UFR分别为黄蓝红。</p>
+<figure>
+<img src="/img/Rubik_Cube.jpg" alt="3×3×3 Rubik’s Cube" />
+<figcaption aria-hidden="true">3×3×3 Rubik’s Cube</figcaption>
+</figure>
+<p>转动公式中R表示右层顺时针旋转，R’表示逆时针、R2表示旋转180度，依此类推。</p>
+<hr />
+<p><strong>极简还原公式</strong></p>
+<p>层先法适合初学者，从下往上逐层还原，最少只需要记忆4个公式。</p>
+<p>通过观察可以相对简单地还原底层和中层4个棱块，在此略过不表。</p>
+<p>在前两层归位的基础上，应用以下公式来还原最顶层。然后完成啦~</p>
+<ol type="1">
+<li>顶层十字：F R U R’ U’ F’</li>
+<li>交换棱块：R U R’ U R U2 R’</li>
+<li>交换角块：R B’ R F2 R’ B R F2 R2</li>
+<li>角块翻色：(R’ D’ R D) 重复操作</li>
+</ol>
+<p>层先法熟练后，可以过渡到速拧常用的CFOP方法（119个公式）。</p>
+<figure>
+<img src="/img/Cube_Explorer.png" alt="Cube Explorer 魔方求解软件" />
+<figcaption aria-hidden="true">Cube Explorer 魔方求解软件</figcaption>
+</figure>
+<hr />
+<p><strong>计算机算法</strong></p>
+<p>1992年Kociemba提出的Two-Phase算法，是计算机求解三阶魔方的主流方法。</p>
+<p>该算法充分利用群论对称性和启发式搜索（IDA*），可以快速找到近似最优解。</p>
+<p>2010年大规模计算证明：三阶魔方任意状态均可在20步（上帝之数）以内还原。</p>
+<p>以下Python代码展示如何构建魔方状态，并调用库函数求解。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> kociemba</span><br><span class="line"><span class="keyword">import</span> pycuber</span><br><span class="line"></span><br><span class="line">cube = pycuber.Cube()</span><br><span class="line">scramble = <span class="string">&quot;F R U R&#x27; U&#x27; F&#x27; R U R&#x27; U R U2 R&#x27; R B&#x27; R F2 R&#x27; B R F2 R2 R&#x27; D&#x27; R D R&#x27; D&#x27; R D&quot;</span></span><br><span class="line">cube(scramble)</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">cube_to_state</span>(<span class="params">cube</span>):</span><br><span class="line">    color_map = &#123;<span class="string">&#x27;yellow&#x27;</span>:<span class="string">&#x27;U&#x27;</span>, <span class="string">&#x27;orange&#x27;</span>:<span class="string">&#x27;R&#x27;</span>, <span class="string">&#x27;green&#x27;</span>:<span class="string">&#x27;F&#x27;</span>, <span class="string">&#x27;white&#x27;</span>:<span class="string">&#x27;D&#x27;</span>, <span class="string">&#x27;red&#x27;</span>:<span class="string">&#x27;L&#x27;</span>, <span class="string">&#x27;blue&#x27;</span>:<span class="string">&#x27;B&#x27;</span>&#125;</span><br><span class="line">    faces = [<span class="string">&#x27;U&#x27;</span>, <span class="string">&#x27;R&#x27;</span>, <span class="string">&#x27;F&#x27;</span>, <span class="string">&#x27;D&#x27;</span>, <span class="string">&#x27;L&#x27;</span>, <span class="string">&#x27;B&#x27;</span>]</span><br><span class="line">    state = <span class="string">&#x27;&#x27;</span></span><br><span class="line">    <span class="keyword">for</span> f <span class="keyword">in</span> faces:</span><br><span class="line">        face = <span class="built_in">getattr</span>(cube, f)</span><br><span class="line">        <span class="keyword">for</span> row <span class="keyword">in</span> face:</span><br><span class="line">            <span class="keyword">for</span> square <span class="keyword">in</span> row:</span><br><span class="line">                state += color_map[square.colour]</span><br><span class="line">    <span class="keyword">return</span> state</span><br><span class="line"></span><br><span class="line">cube_str = cube_to_state(cube)</span><br><span class="line">solution = kociemba.solve(cube_str)</span><br><span class="line"><span class="built_in">print</span>(solution)</span><br><span class="line"><span class="comment"># F B2 L2 U B L2 D R U2 F R2 D B2 U F2 L2 D L2 D&#x27; F2</span></span><br></pre></td></tr></table></figure>
+<hr />
+<p><strong>电影和现实</strong></p>
+<p>电影《当幸福来敲门》中，威尔·史密斯在出租车上拼好魔方，带来了珍贵的面试机会。</p>
+<p>魔方从打乱到还原的过程，精准隐喻了主人公的人生从混乱失控到重建秩序的艰难历程。</p>
+<p>Pursuit of Happyness 据说这是一部非常适合中年失业者的励志片。追寻幸福❤️</p>
+<figure>
+<img src="/img/Pursuit_Happyness.png" alt="实习生教材《证券分析》" />
+<figcaption aria-hidden="true">实习生教材《证券分析》</figcaption>
+</figure>
+<p>最后想问：你在几岁时第一次接触魔方？有没有见过机器人还原魔方？</p>
+<hr />
+<p><strong>参考资料</strong></p>
+<p>T. Rokicki, H. Kociemba, M. Davidson, J. Dethridge. The diameter of the Rubik’s Cube group is twenty. SIAM Journal on Discrete Mathematics, 2013, 27(2): 1082-1105.</p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          
+
+<div class="post-copyright">
+<ul>
+  <li class="post-copyright-author">
+      <strong>本文作者： </strong>moiLaird
+  </li>
+  <li class="post-copyright-link">
+      <strong>本文链接：</strong>
+      <a href="https://moilaird.github.io/2026/05/rubik-cube-revisit/" title="重温三阶魔方">https://moilaird.github.io/2026/05/rubik-cube-revisit/</a>
+  </li>
+  <li class="post-copyright-license">
+      <strong>版权声明： </strong>本文采用 <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/" rel="noopener external nofollow" target="_blank">CC BY-NC-ND 4.0</a> 许可协议，转载请注明出处。
+  </li>
+</ul>
+</div>
+
+          <div class="post-tags">
+              <a href="/tags/%E9%AD%94%E6%96%B9/" rel="tag"># 魔方</a>
+              <a href="/tags/Kociemba%E7%AE%97%E6%B3%95/" rel="tag"># Kociemba算法</a>
+              <a href="/tags/%E7%94%B5%E5%BD%B1/" rel="tag"># 电影</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2017/04/integer-partition/" rel="prev" title="整数分拆使乘积最大">
+                  <i class="fa fa-angle-left"></i> 整数分拆使乘积最大
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2026/05/cube-solver-wechat/" rel="next" title="Vibe Coding记录：AI开发魔方小程序">
+                  Vibe Coding记录：AI开发魔方小程序 <i class="fa fa-angle-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 2017 – 
+    <span itemprop="copyrightYear">2026</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">moiLaird</span>
+  </div>
+<div class="busuanzi-count">
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/mist/" rel="noopener" target="_blank">NexT.Mist</a> 强力驱动
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+</body>
+</html>

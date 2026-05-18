@@ -10,7 +10,82 @@
   <rights>All rights reserved 2026, moiLaird</rights>
   <subtitle>on Life and Learning</subtitle>
   <title>Laird Notes</title>
-  <updated>2026-05-08T00:22:43.985Z</updated>
+  <updated>2026-05-18T01:23:13.549Z</updated>
+  <entry>
+    <author>
+      <name>moiLaird</name>
+    </author>
+    <category term="Programming" scheme="https://moilaird.github.io/categories/Programming/"/>
+    <category term="魔方" scheme="https://moilaird.github.io/tags/%E9%AD%94%E6%96%B9/"/>
+    <category term="微信小程序" scheme="https://moilaird.github.io/tags/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F/"/>
+    <category term="提示词" scheme="https://moilaird.github.io/tags/%E6%8F%90%E7%A4%BA%E8%AF%8D/"/>
+    <category term="Vibe Coding" scheme="https://moilaird.github.io/tags/Vibe-Coding/"/>
+    <category term="AI辅助编程" scheme="https://moilaird.github.io/tags/AI%E8%BE%85%E5%8A%A9%E7%BC%96%E7%A8%8B/"/>
+    <content>
+      <![CDATA[<style>.post-content h2 {    text-align: center !important;    font-weight: 600;    font-size: 1.6em;    margin-top: 2em;    margin-bottom: 1em;    border-bottom: none !important;}/* 统一小标题样式 */.post-content h3 {    text-align: left;    font-weight: 600;    font-size: 1.3em;    margin-top: 1.5em;    margin-bottom: 0.8em;}</style><blockquote><p>原文首发于微信公众号 <a href="https://mp.weixin.qq.com/s/zwF1lRWdTi8PQZo8qN9bXQ">Laird Notes</a>，转载时排版略有调整。</p></blockquote><p>氛围编程（vibe coding）已出现一年有余。在工作中常用LLM生成脚本，或用Copilot实现函数、文件级重构，但还未用于过个人兴趣项目。</p><p>我一直想尝试开发小程序，可是（过气C++码农）懒得学习JavaScript，微信官方教程好几次看完简介就搁置了。</p><p>过去的这个周末，有充足的时间和放松的心情。周六晚上灵机一动：为什么不跳过前置知识，直接开始动手做呢？</p><p>于是在接下来六小时里，从简单提示词开始，用AI工具逐步迭代生成魔方求解小程序。全程没有人工写一行代码。</p><span id="more"></span><h2 id="工具和提示词">工具和提示词</h2><p>工欲善其事，必先利其器。第一步，开发工具的选择很快就确定了。</p><ul><li>编程代理：OpenCode，开源、切换模型简单，名字也好听~</li><li>模型：Kimi K2.6，agent编码能力出色，喜欢的国产模型</li><li>IDE: 微信开发者工具，用于小程序编译、调试和真机预览</li></ul><p>起初的提示词非常简单，仅描述了所需功能和算法，交给Kimi细化后得到完整Spec。</p><blockquote><p>帮我设计提示词，向OpenCode准确描述需求：开发一个微信小程序，对3阶魔方6个面拍照后，用Kociemba算法计算还原步骤公式。可选加上3D动画展示功能。</p></blockquote><figure><img src="/img/OpenCode-prompt.png" alt="OpenCode-提示词Spec" /><figcaption aria-hidden="true">OpenCode-提示词Spec</figcaption></figure><p>将完整的提示词规格输入OpenCode，等待几分钟顺便喝杯茶，回来发现项目文件和代码已经神奇地生成好了。</p><p>然后把项目文件夹导入微信开发者工具，自动编译完成后，点击小程序界面的各个按钮，貌似可以正常工作:-)</p><figure><img src="/img/WX-devtool.png" alt="微信开发者工具-调试预览" /><figcaption aria-hidden="true">微信开发者工具-调试预览</figcaption></figure><h2 id="遇到的问题">遇到的问题</h2><p>接下来转到真机测试时，先后遇到三个性能或可用性问题，debug捉虫花去不少时间，所幸AI都帮忙解决了。</p><h3 id="初始化太慢---jscore性能">初始化太慢 - JSCore性能</h3><p>第一个问题：小程序在电脑模拟器上运行流畅，但在iPhone上测试时，卡在求解前的初始化阶段，几分钟无响应。</p><p>Kimi分析指出，这是因为iOS运行环境JSCore对第三方应用禁用JIT，而Kociemba算法求解前需要密集计算查找表。</p><p>为了避免超时、提高UI响应性，Kimi提出分步计算12个表并在界面显示进度条。算是治标不治本地解决了问题。</p><figure><img src="/img/Kimi-JSCore.png" alt="Kimi-初始化慢的原因" /><figcaption aria-hidden="true">Kimi-初始化慢的原因</figcaption></figure><h3 id="摄像头报错---camera组件">摄像头报错 - camera组件</h3><p>第二个问题：小程序始终无法调用手机摄像头拍照，有时静默黑屏、有时提示insertCamera:fail。</p><p>Kimi努力推测原因、反复修改代码，然而真机测试一直失败。这时我想到试试新出的DeepSeek-V4。</p><p>DS4一针见血指出，微信camera组件在iOS极不稳定，建议改用wx.chooseImage调用系统原生相机。</p><figure><img src="/img/DeepSeek-camera.png" alt="DeepSeek-摄像头组件" /><figcaption aria-hidden="true">DeepSeek-摄像头组件</figcaption></figure><h3 id="颜色识别不准---工程妥协">颜色识别不准 - 工程妥协</h3><p>第三个问题：对魔方六个面拍照后，需要识别每个色块的颜色。如下图所示，标问号的块表示程序无法确定。</p><figure><img src="/img/Colors-cube.png" alt="CubeSolver-颜色识别" /><figcaption aria-hidden="true">CubeSolver-颜色识别</figcaption></figure><p>对人眼来说轻而易举的事——区分六种颜色，对机器程序并不简单。拍照角度、光照、背景都会造成干扰。</p><p>反复和不同AI模型探讨改进方向，真机测试却发现准确率没有提升。豆包一改就错，常犯明显的逻辑错误。</p><p>GLM-5.1则经过长时间思考给出复杂方案，代码实现里暗藏逻辑缺陷，被用户发现后承认自己过度工程化。</p><p>直到我读到一篇魔方机器人的技术报告，发现使用OpenCV库，在不同光照环境下识别准确率平均只有70%。</p><p>瞬间感到释然，决定妥协接受现状。纯JS代码实现，室内光照下54个块识别错3-6个够用了，可以人工修正。</p><p>最终采用方案：HSV颜色空间、截尾均值采样、中心块参考色、加权距离分类、全局约束、人工修正未知。</p><h2 id="时间与成本">时间与成本</h2><p>整个魔方小程序的开发前后花了6小时。前2小时用于配置工具、准备提示词、生成MVP原型。</p><p>分析JS性能问题和修复摄像头错误各耗时约1小时。最后2小时专注于优化颜色识别准确率。</p><p>模型成本方面，Kimi、豆包、GLM通过字节Coding Plan使用，对token消耗量不敏感。</p><p>DeepSeek-V4通过官方API调用，据观察修复单个bug消耗2M token，价值￥1.5。</p><figure><img src="/img/Models-comp.png" alt="四格漫画-模型对比" /><figcaption aria-hidden="true">四格漫画-模型对比</figcaption></figure><h2 id="开源代码">开源代码</h2><p>项目代码已推送至 <code>GitHub</code>: <a href="https://github.com/moiLaird/CubeSolver-WeChat" class="uri">https://github.com/moiLaird/CubeSolver-WeChat</a></p><p>Linus曾说：Talk is cheap, show me the code.</p><p>如今AI agent能快速生成大量代码，编码本身似乎不再是瓶颈。</p><p>准确定义问题、清晰思考、有效沟通的能力，变得越来越重要。</p><p>毕竟真正产生价值的是解决问题，而不是写计算机代码。</p><p>写代码只是人与机器沟通的一种方式。</p>]]>
+    </content>
+    <id>https://moilaird.github.io/2026/05/cube-solver-wechat/</id>
+    <link href="https://moilaird.github.io/2026/05/cube-solver-wechat/"/>
+    <published>2026-05-17T23:43:45.000Z</published>
+    <summary>
+      <![CDATA[<style>
+.post-content h2 {
+    text-align: center !important;
+    font-weight: 600;
+    font-size: 1.6em;
+    margin-top: 2em;
+    margin-bottom: 1em;
+    border-bottom: none !important;
+}
+/* 统一小标题样式 */
+.post-content h3 {
+    text-align: left;
+    font-weight: 600;
+    font-size: 1.3em;
+    margin-top: 1.5em;
+    margin-bottom: 0.8em;
+}
+</style>
+<blockquote>
+<p>原文首发于微信公众号 <a href="https://mp.weixin.qq.com/s/zwF1lRWdTi8PQZo8qN9bXQ">Laird Notes</a>，转载时排版略有调整。</p>
+</blockquote>
+<p>氛围编程（vibe coding）已出现一年有余。在工作中常用LLM生成脚本，或用Copilot实现函数、文件级重构，但还未用于过个人兴趣项目。</p>
+<p>我一直想尝试开发小程序，可是（过气C++码农）懒得学习JavaScript，微信官方教程好几次看完简介就搁置了。</p>
+<p>过去的这个周末，有充足的时间和放松的心情。周六晚上灵机一动：为什么不跳过前置知识，直接开始动手做呢？</p>
+<p>于是在接下来六小时里，从简单提示词开始，用AI工具逐步迭代生成魔方求解小程序。全程没有人工写一行代码。</p>]]>
+    </summary>
+    <title>Vibe Coding记录：AI开发魔方小程序</title>
+    <updated>2026-05-18T01:23:13.549Z</updated>
+  </entry>
+  <entry>
+    <author>
+      <name>moiLaird</name>
+    </author>
+    <category term="Game" scheme="https://moilaird.github.io/categories/Game/"/>
+    <category term="魔方" scheme="https://moilaird.github.io/tags/%E9%AD%94%E6%96%B9/"/>
+    <category term="Kociemba算法" scheme="https://moilaird.github.io/tags/Kociemba%E7%AE%97%E6%B3%95/"/>
+    <category term="电影" scheme="https://moilaird.github.io/tags/%E7%94%B5%E5%BD%B1/"/>
+    <content>
+      <![CDATA[<blockquote><p>原文首发于微信公众号 <a href="https://mp.weixin.qq.com/s/8ao-vRIDXoSHCIEyDt6dJg">Laird Notes</a>，转载时排版略有调整。</p></blockquote><p>春节回家时，翻出了十多年前的《魔方宝典》，纸张如今已泛黄。</p><p>三月初重新买了个魔方，才发现太久没玩，都已忘记还原的方法。</p><p>靠着尝试、搜索和回忆，慢慢找回感觉，也有些新发现。</p><p>又拖了一月，才勉强写下这篇备忘。</p><hr /><p><strong>魔方基本概念</strong></p><p>魔方（魔术方块）是匈牙利建筑学教授Rubik Ernő在1974年发明的智力玩具。</p><span id="more"></span><p>经典的三阶魔方有26个块：6个中心块、12个棱块、8个角块。</p><p>6个面一般记为：顶面U、底面D、前面F、背面B、左面L、右面R。</p><p>标准配色：白黄相对、红橙相对、蓝绿相对，UFR分别为黄蓝红。</p><figure><img src="/img/Rubik_Cube.jpg" alt="3×3×3 Rubik’s Cube" /><figcaption aria-hidden="true">3×3×3 Rubik’s Cube</figcaption></figure><p>转动公式中R表示右层顺时针旋转，R’表示逆时针、R2表示旋转180度，依此类推。</p><hr /><p><strong>极简还原公式</strong></p><p>层先法适合初学者，从下往上逐层还原，最少只需要记忆4个公式。</p><p>通过观察可以相对简单地还原底层和中层4个棱块，在此略过不表。</p><p>在前两层归位的基础上，应用以下公式来还原最顶层。然后完成啦~</p><ol type="1"><li>顶层十字：F R U R’ U’ F’</li><li>交换棱块：R U R’ U R U2 R’</li><li>交换角块：R B’ R F2 R’ B R F2 R2</li><li>角块翻色：(R’ D’ R D) 重复操作</li></ol><p>层先法熟练后，可以过渡到速拧常用的CFOP方法（119个公式）。</p><figure><img src="/img/Cube_Explorer.png" alt="Cube Explorer 魔方求解软件" /><figcaption aria-hidden="true">Cube Explorer 魔方求解软件</figcaption></figure><hr /><p><strong>计算机算法</strong></p><p>1992年Kociemba提出的Two-Phase算法，是计算机求解三阶魔方的主流方法。</p><p>该算法充分利用群论对称性和启发式搜索（IDA*），可以快速找到近似最优解。</p><p>2010年大规模计算证明：三阶魔方任意状态均可在20步（上帝之数）以内还原。</p><p>以下Python代码展示如何构建魔方状态，并调用库函数求解。</p><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> kociemba</span><br><span class="line"><span class="keyword">import</span> pycuber</span><br><span class="line"></span><br><span class="line">cube = pycuber.Cube()</span><br><span class="line">scramble = <span class="string">&quot;F R U R&#x27; U&#x27; F&#x27; R U R&#x27; U R U2 R&#x27; R B&#x27; R F2 R&#x27; B R F2 R2 R&#x27; D&#x27; R D R&#x27; D&#x27; R D&quot;</span></span><br><span class="line">cube(scramble)</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">cube_to_state</span>(<span class="params">cube</span>):</span><br><span class="line">    color_map = &#123;<span class="string">&#x27;yellow&#x27;</span>:<span class="string">&#x27;U&#x27;</span>, <span class="string">&#x27;orange&#x27;</span>:<span class="string">&#x27;R&#x27;</span>, <span class="string">&#x27;green&#x27;</span>:<span class="string">&#x27;F&#x27;</span>, <span class="string">&#x27;white&#x27;</span>:<span class="string">&#x27;D&#x27;</span>, <span class="string">&#x27;red&#x27;</span>:<span class="string">&#x27;L&#x27;</span>, <span class="string">&#x27;blue&#x27;</span>:<span class="string">&#x27;B&#x27;</span>&#125;</span><br><span class="line">    faces = [<span class="string">&#x27;U&#x27;</span>, <span class="string">&#x27;R&#x27;</span>, <span class="string">&#x27;F&#x27;</span>, <span class="string">&#x27;D&#x27;</span>, <span class="string">&#x27;L&#x27;</span>, <span class="string">&#x27;B&#x27;</span>]</span><br><span class="line">    state = <span class="string">&#x27;&#x27;</span></span><br><span class="line">    <span class="keyword">for</span> f <span class="keyword">in</span> faces:</span><br><span class="line">        face = <span class="built_in">getattr</span>(cube, f)</span><br><span class="line">        <span class="keyword">for</span> row <span class="keyword">in</span> face:</span><br><span class="line">            <span class="keyword">for</span> square <span class="keyword">in</span> row:</span><br><span class="line">                state += color_map[square.colour]</span><br><span class="line">    <span class="keyword">return</span> state</span><br><span class="line"></span><br><span class="line">cube_str = cube_to_state(cube)</span><br><span class="line">solution = kociemba.solve(cube_str)</span><br><span class="line"><span class="built_in">print</span>(solution)</span><br><span class="line"><span class="comment"># F B2 L2 U B L2 D R U2 F R2 D B2 U F2 L2 D L2 D&#x27; F2</span></span><br></pre></td></tr></table></figure><hr /><p><strong>电影和现实</strong></p><p>电影《当幸福来敲门》中，威尔·史密斯在出租车上拼好魔方，带来了珍贵的面试机会。</p><p>魔方从打乱到还原的过程，精准隐喻了主人公的人生从混乱失控到重建秩序的艰难历程。</p><p>Pursuit of Happyness 据说这是一部非常适合中年失业者的励志片。追寻幸福❤️</p><figure><img src="/img/Pursuit_Happyness.png" alt="实习生教材《证券分析》" /><figcaption aria-hidden="true">实习生教材《证券分析》</figcaption></figure><p>最后想问：你在几岁时第一次接触魔方？有没有见过机器人还原魔方？</p><hr /><p><strong>参考资料</strong></p><p>T. Rokicki, H. Kociemba, M. Davidson, J. Dethridge. The diameter of the Rubik’s Cube group is twenty. SIAM Journal on Discrete Mathematics, 2013, 27(2): 1082-1105.</p>]]>
+    </content>
+    <id>https://moilaird.github.io/2026/05/rubik-cube-revisit/</id>
+    <link href="https://moilaird.github.io/2026/05/rubik-cube-revisit/"/>
+    <published>2026-05-17T15:46:35.000Z</published>
+    <summary>
+      <![CDATA[<blockquote>
+<p>原文首发于微信公众号 <a href="https://mp.weixin.qq.com/s/8ao-vRIDXoSHCIEyDt6dJg">Laird Notes</a>，转载时排版略有调整。</p>
+</blockquote>
+<p>春节回家时，翻出了十多年前的《魔方宝典》，纸张如今已泛黄。</p>
+<p>三月初重新买了个魔方，才发现太久没玩，都已忘记还原的方法。</p>
+<p>靠着尝试、搜索和回忆，慢慢找回感觉，也有些新发现。</p>
+<p>又拖了一月，才勉强写下这篇备忘。</p>
+<hr />
+<p><strong>魔方基本概念</strong></p>
+<p>魔方（魔术方块）是匈牙利建筑学教授Rubik Ernő在1974年发明的智力玩具。</p>]]>
+    </summary>
+    <title>重温三阶魔方</title>
+    <updated>2026-05-18T01:23:15.677Z</updated>
+  </entry>
   <entry>
     <author>
       <name>moiLaird</name>
