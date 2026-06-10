@@ -10,7 +10,45 @@
   <rights>All rights reserved 2026, moiLaird</rights>
   <subtitle>on Life and Learning</subtitle>
   <title>Laird Notes</title>
-  <updated>2026-05-24T04:17:08.206Z</updated>
+  <updated>2026-06-10T15:12:24.230Z</updated>
+  <entry>
+    <author>
+      <name>moiLaird</name>
+    </author>
+    <category term="Mathematics" scheme="https://moilaird.github.io/categories/Mathematics/"/>
+    <category term="LLM" scheme="https://moilaird.github.io/tags/LLM/"/>
+    <category term="高考" scheme="https://moilaird.github.io/tags/%E9%AB%98%E8%80%83/"/>
+    <category term="数学" scheme="https://moilaird.github.io/tags/%E6%95%B0%E5%AD%A6/"/>
+    <content>
+      <![CDATA[<style>.post-content h2 {    text-align: center !important;    font-weight: 600;    font-size: 1.6em;    margin-top: 2em;    margin-bottom: 1em;    border-bottom: none !important;}/* 统一小标题样式 */.post-content h3 {    text-align: left;    font-weight: 600;    font-size: 1.3em;    margin-top: 1.5em;    margin-bottom: 0.8em;}</style><p>过去两天是2026年高考的日子。昨晚睡前想到让AI模型来做今年的数学题，看看它们水平如何。</p><span id="more"></span><h2 id="题目与提示词">题目与提示词</h2><p>网上能够找到的真题不多，最后选择了这个<a href="https://www.gk100.com/read_136194540.htm">图片版</a>（新高考一卷）。</p><p>由于部分模型仅支持文本输入，首先将图像内容转换为文本，数学公式用LaTeX标记。</p><p>例如第12题：双曲线 <span class="math inline">\(5x^2 - 6y^2 = 1\)</span> 的离心率为 <span class="math inline">\(\underline{\quad\quad\quad}\)</span>。</p><p>然后用OpenCode接入各家模型API做测试，每轮独立session、只换model参数。</p><p>允许模型调用Wolfram MCP计算；但禁止联网搜索答案。以下是统一使用的提示词。</p><blockquote><p>你正在参加高考数学考试。请严格遵循以下规则：<br> 1. 读取题目文件，回答试卷中的全部问题，不要遗漏。<br> 2. 输出使用 Markdown 文件，数学公式使用 LaTeX。<br> 3. 思考过程使用中文，展示完整的推理、计算或证明步骤。<br> 4. 可以使用 Wolfram MCP 工具进行数值或符号计算。<br> 5. 不要访问网络，尤其不允许搜索网页信息获取现成答案。<br> 6. 对于选择题和填空题，在最终答案处用  标记。<br> 7. 对于解答题，写出文字说明、证明过程或演算步骤。<br> 8. 时间限制：只有120分钟完成全卷。第1-14题必须在60分钟内完成。<br> 9. 如果某题思考后不确定，请给出最佳猜测并继续，不要反复推理。<br> 现在，请读取 2026_gaokao_math.md，并回答全部问题。</p></blockquote><h2 id="评测结果">评测结果</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">opencode-cli --model deepseek/deepseek-v4-pro --prompt gaokao.txt</span><br></pre></td></tr></table></figure><figure><img src="/img/deepseek_math.png" alt="DeepSeek-V4-Pro output" /><figcaption aria-hidden="true">DeepSeek-V4-Pro output</figcaption></figure><p>逐个运行测试，依模型不同、等待5-10分钟出结果。5款国产大模型对比如下。</p><table><thead><tr><th>模型</th><th style="text-align: center;">答对</th><th style="text-align: center;">得分</th><th style="text-align: center;">错题</th><th style="text-align: center;">用时/分钟</th><th style="text-align: center;">tokens/K</th><th style="text-align: center;">API费用/元</th></tr></thead><tbody><tr><td>DeepSeek-V4-Pro</td><td style="text-align: center;">14</td><td style="text-align: center;">73 (100%)</td><td style="text-align: center;">—</td><td style="text-align: center;">5</td><td style="text-align: center;">184</td><td style="text-align: center;">0.35</td></tr><tr><td>Kimi K2.6</td><td style="text-align: center;">14</td><td style="text-align: center;">73 (100%)</td><td style="text-align: center;">—</td><td style="text-align: center;">10</td><td style="text-align: center;">206</td><td style="text-align: center;">1.02</td></tr><tr><td>Qwen3.7-Max</td><td style="text-align: center;">13</td><td style="text-align: center;">67 (91.8%)</td><td style="text-align: center;">11</td><td style="text-align: center;">9</td><td style="text-align: center;">283</td><td style="text-align: center;">0.62 (5折)</td></tr><tr><td>Doubao Seed2.0-Pro</td><td style="text-align: center;">12</td><td style="text-align: center;">62 (84.9%)</td><td style="text-align: center;">10、14</td><td style="text-align: center;">5</td><td style="text-align: center;">382</td><td style="text-align: center;">0.73</td></tr><tr><td>GLM-5.1</td><td style="text-align: center;">12</td><td style="text-align: center;">61 (83.5%)</td><td style="text-align: center;">10、11</td><td style="text-align: center;">10</td><td style="text-align: center;">90</td><td style="text-align: center;">0.97</td></tr></tbody></table><p>这次只测客观题（选择+填空），14题共73分。解答题评分有主观性，暂时跳过。</p><p>DeepSeek-V4-Pro和Kimi K2.6都得了满分，其余三家均在多选题上失分。</p><p>第14题有个小插曲：原始图片里数组下标有误，应为3n。首次测试DeepSeek在这道题反复纠结了半小时，我手工中止后，修正了题目，并在提示词里追加了时间限制。</p><h2 id="测试成本">测试成本</h2><p>上文表格中的API费用一栏，基于以下模型定价得出。单位：元/百万token。</p><table><thead><tr><th style="text-align: left;">模型</th><th style="text-align: left;">输入</th><th style="text-align: left;">缓存命中</th><th style="text-align: left;">输出</th><th style="text-align: left;">备注</th></tr></thead><tbody><tr><td style="text-align: left;">DeepSeek-V4-Pro</td><td style="text-align: left;">3</td><td style="text-align: left;">0.025</td><td style="text-align: left;">6</td><td style="text-align: left;"></td></tr><tr><td style="text-align: left;">Doubao Seed2.0-Pro</td><td style="text-align: left;">3.2</td><td style="text-align: left;">0.64</td><td style="text-align: left;">16</td><td style="text-align: left;">输入&lt;32K</td></tr><tr><td style="text-align: left;">GLM-5.1</td><td style="text-align: left;">6</td><td style="text-align: left;">1.3</td><td style="text-align: left;">24</td><td style="text-align: left;">输入&lt;32K</td></tr><tr><td style="text-align: left;">Kimi K2.6</td><td style="text-align: left;">6.5</td><td style="text-align: left;">1.1</td><td style="text-align: left;">27</td><td style="text-align: left;"></td></tr><tr><td style="text-align: left;">Qwen3.7-Max</td><td style="text-align: left;">12</td><td style="text-align: left;">2.4</td><td style="text-align: left;">36</td><td style="text-align: left;">可限时5折</td></tr></tbody></table><p>我让AI写了个脚本，从opencode.db提取token数据计算成本。</p><p>试题、提示词、各模型输出及token计算脚本已提交GitHub，欢迎复现。</p><p>https://github.com/moiLaird/Gaokao-Math-LLM</p>]]>
+    </content>
+    <id>https://moilaird.github.io/2026/06/gaokao-math-llm/</id>
+    <link href="https://moilaird.github.io/2026/06/gaokao-math-llm/"/>
+    <published>2026-06-09T01:38:24.000Z</published>
+    <summary>
+      <![CDATA[<style>
+.post-content h2 {
+    text-align: center !important;
+    font-weight: 600;
+    font-size: 1.6em;
+    margin-top: 2em;
+    margin-bottom: 1em;
+    border-bottom: none !important;
+}
+/* 统一小标题样式 */
+.post-content h3 {
+    text-align: left;
+    font-weight: 600;
+    font-size: 1.3em;
+    margin-top: 1.5em;
+    margin-bottom: 0.8em;
+}
+</style>
+<p>过去两天是2026年高考的日子。昨晚睡前想到让AI模型来做今年的数学题，看看它们水平如何。</p>]]>
+    </summary>
+    <title>2026高考数学AI评测</title>
+    <updated>2026-06-10T15:12:24.230Z</updated>
+  </entry>
   <entry>
     <author>
       <name>moiLaird</name>
