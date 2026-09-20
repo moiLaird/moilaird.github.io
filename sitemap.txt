@@ -1,3 +1,4 @@
+https://moilaird.github.io/2026/09/korean-learning/
 https://moilaird.github.io/2026/06/gaokao-math-llm/
 https://moilaird.github.io/2026/05/heart-surface/
 https://moilaird.github.io/2026/05/cube-solver-wechat/
@@ -49,9 +50,13 @@ https://moilaird.github.io/tags/bug/
 https://moilaird.github.io/tags/%E6%A1%8C%E9%9D%A2/
 https://moilaird.github.io/tags/Kociemba%E7%AE%97%E6%B3%95/
 https://moilaird.github.io/tags/%E7%94%B5%E5%BD%B1/
+https://moilaird.github.io/tags/%E9%9F%A9%E8%AF%AD/
+https://moilaird.github.io/tags/TTS/
+https://moilaird.github.io/tags/ASR/
 https://moilaird.github.io/categories/Programming/
 https://moilaird.github.io/categories/Tools/
 https://moilaird.github.io/categories/Mathematics/
 https://moilaird.github.io/categories/OJ/
 https://moilaird.github.io/categories/Miscellaneous/
 https://moilaird.github.io/categories/Game/
+https://moilaird.github.io/categories/Language/
