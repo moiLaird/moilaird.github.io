@@ -30,7 +30,7 @@
 <meta property="og:image" content="https://moilaird.github.io/img/seosi.png">
 <meta property="og:image" content="https://moilaird.github.io/img/sarang.png">
 <meta property="article:published_time" content="2026-09-19T11:23:32.000Z">
-<meta property="article:modified_time" content="2026-09-20T02:57:02.981Z">
+<meta property="article:modified_time" content="2026-09-20T03:36:14.900Z">
 <meta property="article:author" content="moiLaird">
 <meta property="article:tag" content="ASR">
 <meta property="article:tag" content="TTS">
@@ -281,7 +281,7 @@
 <p>在做录音作业时，我想到可以用技术工具辅助。俗话说“差生文具多”嘛^o^</p>
 <p>主要是这两个：文本转语音TTS (Text-to-Speech)，语音识别ASR (Automatic Speech Recognition)。分别对应输入和输出环节。</p>
 <h2 id="tts-生成跟读材料">TTS 生成跟读材料</h2>
-<p>TTS可以将感兴趣的文本转换为语音，适合制作慢速跟读和听力材料。对比了几家服务，ElevenLabs的音色最自然；但个人学习更推荐免费的<code>edge-tts</code>，底层调用微软的神经网络语音模型。</p>
+<p>TTS可以将感兴趣的文本转换为语音，适合制作慢速跟读和听力材料。对比了几家服务，ElevenLabs的音色最自然；但个人学习更推荐免费的<code>edge-tts</code>，它调用微软的在线语音合成服务。</p>
 <p>以诗人尹东柱的代表作《序诗》为例，这首诗出现在洪常秀2024年的电影《旅行者的需求》中。</p>
 <p><img src="/img/seosi.png" alt="서시(序詩) — 윤동주" style="width: 550px"></p>
 <p>先安装edge-tts包，查看所有可用声音。这里选择<code>SunHi</code>(선희，善熙)——温和的女播音，并将语速降低10%来生成MP3音频。</p>
