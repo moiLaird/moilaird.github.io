@@ -1,0 +1,300 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:itunes="http://www.itunes.com/dtds/podcast-1.0.dtd" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Deutsch - warum nicht? Series 1 (eng)</title>
+    <link>https://learngerman.dw.com/en/learn-german/s-9528</link>
+    <atom:link href="https://moilaird.github.io/files/dwn_serie1_eng.xml" rel="self" type="application/rss+xml"/>
+    <description>Rebuilt feed for DW's archived audio course. DW no longer publishes the podcast RSS; the MP3s still live on its CDN.</description>
+    <language>de</language>
+    <itunes:author>Deutsche Welle</itunes:author>
+    <itunes:image href="https://moilaird.github.io/files/DWN1.png"/>
+    <itunes:category text="Education"><itunes:category text="Language Learning"/></itunes:category>
+    <itunes:explicit>no</itunes:explicit>
+    <item>
+      <title>DWN1 Lektion 01 - This is a song</title>
+      <link>https://learngerman.dw.com/en/chapter-01-this-is-a-song/a-215437</link>
+      <enclosure url="https://radiodownloaddw-a.akamaihd.net/Events/dwelle/deutschkurse/deutschwarumnicht/serie1/eng/DWN_Englisch_Serie1_Lektion01.mp3" length="5939030" type="audio/mpeg"/>
+      <guid isPermalink="false">https://radiodownloaddw-a.akamaihd.net/Events/dwelle/deutschkurse/deutschwarumnicht/serie1/eng/DWN_Englisch_Serie1_Lektion01.mp3</guid>
+      <pubDate>Tue, 22 Sep 2009 00:00:00 +0000</pubDate>
+      <itunes:season>1</itunes:season>
+      <itunes:episode>1</itunes:episode>
+      <itunes:duration>742</itunes:duration>
+      <description>DWN1 Lektion 01 text: https://static.dw.com/downloads/25629156/eng1-01.pdf</description>
+    </item>
+    <item>
+      <title>DWN1 Lektion 02 - Hey, taxi!</title>
+      <link>https://learngerman.dw.com/en/chapter-02-hey-taxi/a-216039</link>
+      <enclosure url="https://radiodownloaddw-a.akamaihd.net/Events/dwelle/deutschkurse/deutschwarumnicht/serie1/eng/DWN_Englisch_Serie1_Lektion02.mp3" length="6306034" type="audio/mpeg"/>
+      <guid isPermalink="false">https://radiodownloaddw-a.akamaihd.net/Events/dwelle/deutschkurse/deutschwarumnicht/serie1/eng/DWN_Englisch_Serie1_Lektion02.mp3</guid>
+      <pubDate>Mon, 21 Sep 2009 00:00:00 +0000</pubDate>
+      <itunes:season>1</itunes:season>
+      <itunes:episode>2</itunes:episode>
+      <itunes:duration>788</itunes:duration>
+      <description>DWN1 Lektion 02 text: https://static.dw.com/downloads/25629227/eng1-02.pdf</description>
+    </item>
+    <item>
+      <title>DWN1 Lektion 03 - Hotel Europa</title>
+      <link>https://learngerman.dw.com/en/chapter-03-hotel-europa/a-216076</link>
+      <enclosure url="https://radiodownloaddw-a.akamaihd.net/Events/dwelle/deutschkurse/deutschwarumnicht/serie1/eng/DWN_Englisch_Serie1_Lektion03.mp3" length="6619534" type="audio/mpeg"/>
+      <guid isPermalink="false">https://radiodownloaddw-a.akamaihd.net/Events/dwelle/deutschkurse/deutschwarumnicht/serie1/eng/DWN_Englisch_Serie1_Lektion03.mp3</guid>
+      <pubDate>Sun, 20 Sep 2009 00:00:00 +0000</pubDate>
+      <itunes:season>1</itunes:season>
+      <itunes:episode>3</itunes:episode>
+      <itunes:duration>827</itunes:duration>
+      <description>DWN1 Lektion 03 text: https://static.dw.com/downloads/25629242/eng1-03.pdf</description>
+    </item>
+    <item>
+      <title>DWN1 Lektion 04 - Who’s speaking, please?</title>
+      <link>https://learngerman.dw.com/en/chapter-04-whos-speaking-please/a-217987</link>
+      <enclosure url="https://radiodownloaddw-a.akamaihd.net/Events/dwelle/deutschkurse/deutschwarumnicht/serie1/eng/DWN_Englisch_Serie1_Lektion04.mp3" length="6843164" type="audio/mpeg"/>
+      <guid isPermalink="false">https://radiodownloaddw-a.akamaihd.net/Events/dwelle/deutschkurse/deutschwarumnicht/serie1/eng/DWN_Englisch_Serie1_Lektion04.mp3</guid>
+      <pubDate>Sat, 19 Sep 2009 00:00:00 +0000</pubDate>
+      <itunes:season>1</itunes:season>
+      <itunes:episode>4</itunes:episode>
+      <itunes:duration>855</itunes:duration>
+      <description>DWN1 Lektion 04 text: https://static.dw.com/downloads/25629231/eng1-04.pdf</description>
+    </item>
+    <item>
+      <title>DWN1 Lektion 05 - That is impolite!</title>
+      <link>https://learngerman.dw.com/en/chapter-05-that-is-impolite/a-218050</link>
+      <enclosure url="https://radiodownloaddw-a.akamaihd.net/Events/dwelle/deutschkurse/deutschwarumnicht/serie1/eng/DWN_Englisch_Serie1_Lektion05.mp3" length="6388380" type="audio/mpeg"/>
+      <guid isPermalink="false">https://radiodownloaddw-a.akamaihd.net/Events/dwelle/deutschkurse/deutschwarumnicht/serie1/eng/DWN_Englisch_Serie1_Lektion05.mp3</guid>
+      <pubDate>Fri, 18 Sep 2009 00:00:00 +0000</pubDate>
+      <itunes:season>1</itunes:season>
+      <itunes:episode>5</itunes:episode>
+      <itunes:duration>798</itunes:duration>
+      <description>DWN1 Lektion 05 text: https://static.dw.com/downloads/25629272/eng1-05.pdf</description>
+    </item>
+    <item>
+      <title>DWN1 Lektion 06 - What do you do for a living?</title>
+      <link>https://learngerman.dw.com/en/chapter-06-what-do-you-do-for-a-living/a-218076</link>
+      <enclosure url="https://radiodownloaddw-a.akamaihd.net/Events/dwelle/deutschkurse/deutschwarumnicht/serie1/eng/DWN_Englisch_Serie1_Lektion06.mp3" length="6697700" type="audio/mpeg"/>
+      <guid isPermalink="false">https://radiodownloaddw-a.akamaihd.net/Events/dwelle/deutschkurse/deutschwarumnicht/serie1/eng/DWN_Englisch_Serie1_Lektion06.mp3</guid>
+      <pubDate>Thu, 17 Sep 2009 00:00:00 +0000</pubDate>
+      <itunes:season>1</itunes:season>
+      <itunes:episode>6</itunes:episode>
+      <itunes:duration>837</itunes:duration>
+      <description>DWN1 Lektion 06 text: https://static.dw.com/downloads/25629245/eng1-06.pdf</description>
+    </item>
+    <item>
+      <title>DWN1 Lektion 07 - You are strange!</title>
+      <link>https://learngerman.dw.com/en/chapter-07-you-are-strange/a-218083</link>
+      <enclosure url="https://radiodownloaddw-a.akamaihd.net/Events/dwelle/deutschkurse/deutschwarumnicht/serie1/eng/DWN_Englisch_Serie1_Lektion07.mp3" length="6038932" type="audio/mpeg"/>
+      <guid isPermalink="false">https://radiodownloaddw-a.akamaihd.net/Events/dwelle/deutschkurse/deutschwarumnicht/serie1/eng/DWN_Englisch_Serie1_Lektion07.mp3</guid>
+      <pubDate>Wed, 16 Sep 2009 00:00:00 +0000</pubDate>
+      <itunes:season>1</itunes:season>
+      <itunes:episode>7</itunes:episode>
+      <itunes:duration>755</itunes:duration>
+      <description>DWN1 Lektion 07 text: https://static.dw.com/downloads/25629267/eng1-07.pdf</description>
+    </item>
+    <item>
+      <title>DWN1 Lektion 08 - Where do you come from?</title>
+      <link>https://learngerman.dw.com/en/chapter-08-where-do-you-come-from/a-218110</link>
+      <enclosure url="https://radiodownloaddw-a.akamaihd.net/Events/dwelle/deutschkurse/deutschwarumnicht/serie1/eng/DWN_Englisch_Serie1_Lektion08.mp3" length="6100587" type="audio/mpeg"/>
+      <guid isPermalink="false">https://radiodownloaddw-a.akamaihd.net/Events/dwelle/deutschkurse/deutschwarumnicht/serie1/eng/DWN_Englisch_Serie1_Lektion08.mp3</guid>
+      <pubDate>Tue, 15 Sep 2009 00:00:00 +0000</pubDate>
+      <itunes:season>1</itunes:season>
+      <itunes:episode>8</itunes:episode>
+      <itunes:duration>762</itunes:duration>
+      <description>DWN1 Lektion 08 text: https://static.dw.com/downloads/25629271/eng1-08.pdf</description>
+    </item>
+    <item>
+      <title>DWN1 Lektion 09 - You already know that!</title>
+      <link>https://learngerman.dw.com/en/chapter-09-you-already-know-that/a-218114</link>
+      <enclosure url="https://radiodownloaddw-a.akamaihd.net/Events/dwelle/deutschkurse/deutschwarumnicht/serie1/eng/DWN_Englisch_Serie1_Lektion09.mp3" length="6274893" type="audio/mpeg"/>
+      <guid isPermalink="false">https://radiodownloaddw-a.akamaihd.net/Events/dwelle/deutschkurse/deutschwarumnicht/serie1/eng/DWN_Englisch_Serie1_Lektion09.mp3</guid>
+      <pubDate>Mon, 14 Sep 2009 00:00:00 +0000</pubDate>
+      <itunes:season>1</itunes:season>
+      <itunes:episode>9</itunes:episode>
+      <itunes:duration>784</itunes:duration>
+      <description>DWN1 Lektion 09 text: https://static.dw.com/downloads/25629283/eng1-09.pdf</description>
+    </item>
+    <item>
+      <title>DWN1 Lektion 10 - Have you got a free room?</title>
+      <link>https://learngerman.dw.com/en/chapter-10-have-you-got-a-free-room/a-218140</link>
+      <enclosure url="https://radiodownloaddw-a.akamaihd.net/Events/dwelle/deutschkurse/deutschwarumnicht/serie1/eng/DWN_Englisch_Serie1_Lektion10.mp3" length="6542622" type="audio/mpeg"/>
+      <guid isPermalink="false">https://radiodownloaddw-a.akamaihd.net/Events/dwelle/deutschkurse/deutschwarumnicht/serie1/eng/DWN_Englisch_Serie1_Lektion10.mp3</guid>
+      <pubDate>Sun, 13 Sep 2009 00:00:00 +0000</pubDate>
+      <itunes:season>1</itunes:season>
+      <itunes:episode>10</itunes:episode>
+      <itunes:duration>818</itunes:duration>
+      <description>DWN1 Lektion 10 text: https://static.dw.com/downloads/25629274/eng1-10.pdf</description>
+    </item>
+    <item>
+      <title>DWN1 Lektion 11 - Not another of these rooms!</title>
+      <link>https://learngerman.dw.com/en/chapter-11-not-another-of-these-rooms/a-218142</link>
+      <enclosure url="https://radiodownloaddw-a.akamaihd.net/Events/dwelle/deutschkurse/deutschwarumnicht/serie1/eng/DWN_Englisch_Serie1_Lektion11.mp3" length="7147677" type="audio/mpeg"/>
+      <guid isPermalink="false">https://radiodownloaddw-a.akamaihd.net/Events/dwelle/deutschkurse/deutschwarumnicht/serie1/eng/DWN_Englisch_Serie1_Lektion11.mp3</guid>
+      <pubDate>Sat, 12 Sep 2009 00:00:00 +0000</pubDate>
+      <itunes:season>1</itunes:season>
+      <itunes:episode>11</itunes:episode>
+      <itunes:duration>893</itunes:duration>
+      <description>DWN1 Lektion 11 text: https://static.dw.com/downloads/25629277/eng1-11.pdf</description>
+    </item>
+    <item>
+      <title>DWN1 Lektion 12 - A student or a porter?</title>
+      <link>https://learngerman.dw.com/en/chapter-12-a-student-or-a-porter/a-218144</link>
+      <enclosure url="https://radiodownloaddw-a.akamaihd.net/Events/dwelle/deutschkurse/deutschwarumnicht/serie1/eng/DWN_Englisch_Serie1_Lektion12.mp3" length="7197001" type="audio/mpeg"/>
+      <guid isPermalink="false">https://radiodownloaddw-a.akamaihd.net/Events/dwelle/deutschkurse/deutschwarumnicht/serie1/eng/DWN_Englisch_Serie1_Lektion12.mp3</guid>
+      <pubDate>Fri, 11 Sep 2009 00:00:00 +0000</pubDate>
+      <itunes:season>1</itunes:season>
+      <itunes:episode>12</itunes:episode>
+      <itunes:duration>899</itunes:duration>
+      <description>DWN1 Lektion 12 text: https://static.dw.com/downloads/25629292/eng1-12.pdf</description>
+    </item>
+    <item>
+      <title>DWN1 Lektion 13 - Here’s my key!</title>
+      <link>https://learngerman.dw.com/en/chapter-13-heres-my-key/a-218155</link>
+      <enclosure url="https://radiodownloaddw-a.akamaihd.net/Events/dwelle/deutschkurse/deutschwarumnicht/serie1/eng/DWN_Englisch_Serie1_Lektion13.mp3" length="7145796" type="audio/mpeg"/>
+      <guid isPermalink="false">https://radiodownloaddw-a.akamaihd.net/Events/dwelle/deutschkurse/deutschwarumnicht/serie1/eng/DWN_Englisch_Serie1_Lektion13.mp3</guid>
+      <pubDate>Thu, 10 Sep 2009 00:00:00 +0000</pubDate>
+      <itunes:season>1</itunes:season>
+      <itunes:episode>13</itunes:episode>
+      <itunes:duration>893</itunes:duration>
+      <description>DWN1 Lektion 13 text: https://static.dw.com/downloads/25629279/eng1-13.pdf</description>
+    </item>
+    <item>
+      <title>DWN1 Lektion 14 - You will come to Aachen, won't you?</title>
+      <link>https://learngerman.dw.com/en/chapter-14-you-will-come-to-aachen-wont-you/a-218156</link>
+      <enclosure url="https://radiodownloaddw-a.akamaihd.net/Events/dwelle/deutschkurse/deutschwarumnicht/serie1/eng/DWN_Englisch_Serie1_Lektion14.mp3" length="7186342" type="audio/mpeg"/>
+      <guid isPermalink="false">https://radiodownloaddw-a.akamaihd.net/Events/dwelle/deutschkurse/deutschwarumnicht/serie1/eng/DWN_Englisch_Serie1_Lektion14.mp3</guid>
+      <pubDate>Wed, 09 Sep 2009 00:00:00 +0000</pubDate>
+      <itunes:season>1</itunes:season>
+      <itunes:episode>14</itunes:episode>
+      <itunes:duration>898</itunes:duration>
+      <description>DWN1 Lektion 14 text: https://static.dw.com/downloads/25629330/dwnen1Lektion14.pdf</description>
+    </item>
+    <item>
+      <title>DWN1 Lektion 15 - Are you selling the cassettes, too?</title>
+      <link>https://learngerman.dw.com/en/chapter-15-are-you-selling-the-cassettes-too/a-218170</link>
+      <enclosure url="https://radiodownloaddw-a.akamaihd.net/Events/dwelle/deutschkurse/deutschwarumnicht/serie1/eng/DWN_Englisch_Serie1_Lektion15.mp3" length="7018097" type="audio/mpeg"/>
+      <guid isPermalink="false">https://radiodownloaddw-a.akamaihd.net/Events/dwelle/deutschkurse/deutschwarumnicht/serie1/eng/DWN_Englisch_Serie1_Lektion15.mp3</guid>
+      <pubDate>Tue, 08 Sep 2009 00:00:00 +0000</pubDate>
+      <itunes:season>1</itunes:season>
+      <itunes:episode>15</itunes:episode>
+      <itunes:duration>877</itunes:duration>
+      <description>DWN1 Lektion 15 text: https://static.dw.com/downloads/61512967/Lektion%2015.pdf</description>
+    </item>
+    <item>
+      <title>DWN1 Lektion 16 - Try it on!</title>
+      <link>https://learngerman.dw.com/en/chapter-16-try-it-on/a-218171</link>
+      <enclosure url="https://radiodownloaddw-a.akamaihd.net/Events/dwelle/deutschkurse/deutschwarumnicht/serie1/eng/DWN_Englisch_Serie1_Lektion16.mp3" length="6916941" type="audio/mpeg"/>
+      <guid isPermalink="false">https://radiodownloaddw-a.akamaihd.net/Events/dwelle/deutschkurse/deutschwarumnicht/serie1/eng/DWN_Englisch_Serie1_Lektion16.mp3</guid>
+      <pubDate>Mon, 07 Sep 2009 00:00:00 +0000</pubDate>
+      <itunes:season>1</itunes:season>
+      <itunes:episode>16</itunes:episode>
+      <itunes:duration>864</itunes:duration>
+      <description>DWN1 Lektion 16 text: https://static.dw.com/downloads/25629316/eng1-16.pdf</description>
+    </item>
+    <item>
+      <title>DWN1 Lektion 17 - Four cups - that’s four marks altogether</title>
+      <link>https://learngerman.dw.com/en/chapter-17-four-cups-thats-four-marks-altogether/a-218547</link>
+      <enclosure url="https://radiodownloaddw-a.akamaihd.net/Events/dwelle/deutschkurse/deutschwarumnicht/serie1/eng/DWN_Englisch_Serie1_Lektion17.mp3" length="6788615" type="audio/mpeg"/>
+      <guid isPermalink="false">https://radiodownloaddw-a.akamaihd.net/Events/dwelle/deutschkurse/deutschwarumnicht/serie1/eng/DWN_Englisch_Serie1_Lektion17.mp3</guid>
+      <pubDate>Sun, 06 Sep 2009 00:00:00 +0000</pubDate>
+      <itunes:season>1</itunes:season>
+      <itunes:episode>17</itunes:episode>
+      <itunes:duration>848</itunes:duration>
+      <description>DWN1 Lektion 17 text: https://static.dw.com/downloads/25629303/eng1-17.pdf</description>
+    </item>
+    <item>
+      <title>DWN1 Lektion 18 - No belongings, no luggage</title>
+      <link>https://learngerman.dw.com/en/chapter-18-no-belongings-no-luggage/a-218783</link>
+      <enclosure url="https://radiodownloaddw-a.akamaihd.net/Events/dwelle/deutschkurse/deutschwarumnicht/serie1/eng/DWN_Englisch_Serie1_Lektion18.mp3" length="7143497" type="audio/mpeg"/>
+      <guid isPermalink="false">https://radiodownloaddw-a.akamaihd.net/Events/dwelle/deutschkurse/deutschwarumnicht/serie1/eng/DWN_Englisch_Serie1_Lektion18.mp3</guid>
+      <pubDate>Sat, 05 Sep 2009 00:00:00 +0000</pubDate>
+      <itunes:season>1</itunes:season>
+      <itunes:episode>18</itunes:episode>
+      <itunes:duration>893</itunes:duration>
+      <description>DWN1 Lektion 18 text: https://static.dw.com/downloads/25629324/eng1-18.pdf</description>
+    </item>
+    <item>
+      <title>DWN1 Lektion 19 - I’d like to go to sleep</title>
+      <link>https://learngerman.dw.com/en/chapter-19-id-like-to-go-to-sleep/a-219168</link>
+      <enclosure url="https://radiodownloaddw-a.akamaihd.net/Events/dwelle/deutschkurse/deutschwarumnicht/serie1/eng/DWN_Englisch_Serie1_Lektion19.mp3" length="6544921" type="audio/mpeg"/>
+      <guid isPermalink="false">https://radiodownloaddw-a.akamaihd.net/Events/dwelle/deutschkurse/deutschwarumnicht/serie1/eng/DWN_Englisch_Serie1_Lektion19.mp3</guid>
+      <pubDate>Fri, 04 Sep 2009 00:00:00 +0000</pubDate>
+      <itunes:season>1</itunes:season>
+      <itunes:episode>19</itunes:episode>
+      <itunes:duration>818</itunes:duration>
+      <description>DWN1 Lektion 19 text: https://static.dw.com/downloads/25629333/eng1-19.pdf</description>
+    </item>
+    <item>
+      <title>DWN1 Lektion 20 - Are you ill?</title>
+      <link>https://learngerman.dw.com/en/chapter-20-are-you-ill/a-219317</link>
+      <enclosure url="https://radiodownloaddw-a.akamaihd.net/Events/dwelle/deutschkurse/deutschwarumnicht/serie1/eng/DWN_Englisch_Serie1_Lektion20.mp3" length="6260263" type="audio/mpeg"/>
+      <guid isPermalink="false">https://radiodownloaddw-a.akamaihd.net/Events/dwelle/deutschkurse/deutschwarumnicht/serie1/eng/DWN_Englisch_Serie1_Lektion20.mp3</guid>
+      <pubDate>Thu, 03 Sep 2009 00:00:00 +0000</pubDate>
+      <itunes:season>1</itunes:season>
+      <itunes:episode>20</itunes:episode>
+      <itunes:duration>782</itunes:duration>
+      <description>DWN1 Lektion 20 text: https://static.dw.com/downloads/25629318/eng1-20.pdf</description>
+    </item>
+    <item>
+      <title>DWN1 Lektion 21 - I was in Essen</title>
+      <link>https://learngerman.dw.com/en/chapter-21-i-was-in-essen/a-219499</link>
+      <enclosure url="https://radiodownloaddw-a.akamaihd.net/Events/dwelle/deutschkurse/deutschwarumnicht/serie1/eng/DWN_Englisch_Serie1_Lektion21.mp3" length="6215746" type="audio/mpeg"/>
+      <guid isPermalink="false">https://radiodownloaddw-a.akamaihd.net/Events/dwelle/deutschkurse/deutschwarumnicht/serie1/eng/DWN_Englisch_Serie1_Lektion21.mp3</guid>
+      <pubDate>Wed, 02 Sep 2009 00:00:00 +0000</pubDate>
+      <itunes:season>1</itunes:season>
+      <itunes:episode>21</itunes:episode>
+      <itunes:duration>777</itunes:duration>
+      <description>DWN1 Lektion 21 text: https://static.dw.com/downloads/25629332/eng1-21.pdf</description>
+    </item>
+    <item>
+      <title>DWN1 Lektion 22 - And what about his wife?</title>
+      <link>https://learngerman.dw.com/en/chapter-22-and-what-about-his-wife/a-219650</link>
+      <enclosure url="https://radiodownloaddw-a.akamaihd.net/Events/dwelle/deutschkurse/deutschwarumnicht/serie1/eng/DWN_Englisch_Serie1_Lektion22.mp3" length="6593409" type="audio/mpeg"/>
+      <guid isPermalink="false">https://radiodownloaddw-a.akamaihd.net/Events/dwelle/deutschkurse/deutschwarumnicht/serie1/eng/DWN_Englisch_Serie1_Lektion22.mp3</guid>
+      <pubDate>Tue, 01 Sep 2009 00:00:00 +0000</pubDate>
+      <itunes:season>1</itunes:season>
+      <itunes:episode>22</itunes:episode>
+      <itunes:duration>824</itunes:duration>
+      <description>DWN1 Lektion 22 text: https://static.dw.com/downloads/25629326/eng1-22.pdf</description>
+    </item>
+    <item>
+      <title>DWN1 Lektion 23 - Who’s that speaking?</title>
+      <link>https://learngerman.dw.com/en/chapter-23-whos-that-speaking/a-219694</link>
+      <enclosure url="https://radiodownloaddw-a.akamaihd.net/Events/dwelle/deutschkurse/deutschwarumnicht/serie1/eng/DWN_Englisch_Serie1_Lektion23.mp3" length="6841283" type="audio/mpeg"/>
+      <guid isPermalink="false">https://radiodownloaddw-a.akamaihd.net/Events/dwelle/deutschkurse/deutschwarumnicht/serie1/eng/DWN_Englisch_Serie1_Lektion23.mp3</guid>
+      <pubDate>Mon, 31 Aug 2009 00:00:00 +0000</pubDate>
+      <itunes:season>1</itunes:season>
+      <itunes:episode>23</itunes:episode>
+      <itunes:duration>855</itunes:duration>
+      <description>DWN1 Lektion 23 text: https://static.dw.com/downloads/25629307/eng1-23.pdf</description>
+    </item>
+    <item>
+      <title>DWN1 Lektion 24 - Would you like another coffee?</title>
+      <link>https://learngerman.dw.com/en/chapter-24-would-you-like-another-coffee/a-219696</link>
+      <enclosure url="https://radiodownloaddw-a.akamaihd.net/Events/dwelle/deutschkurse/deutschwarumnicht/serie1/eng/DWN_Englisch_Serie1_Lektion24.mp3" length="6149911" type="audio/mpeg"/>
+      <guid isPermalink="false">https://radiodownloaddw-a.akamaihd.net/Events/dwelle/deutschkurse/deutschwarumnicht/serie1/eng/DWN_Englisch_Serie1_Lektion24.mp3</guid>
+      <pubDate>Sun, 30 Aug 2009 00:00:00 +0000</pubDate>
+      <itunes:season>1</itunes:season>
+      <itunes:episode>24</itunes:episode>
+      <itunes:duration>768</itunes:duration>
+      <description>DWN1 Lektion 24 text: https://static.dw.com/downloads/25629328/eng1-24.pdf</description>
+    </item>
+    <item>
+      <title>DWN1 Lektion 25 - I’ll pay the rest</title>
+      <link>https://learngerman.dw.com/en/chapter-25-ill-pay-the-rest/a-219697</link>
+      <enclosure url="https://radiodownloaddw-a.akamaihd.net/Events/dwelle/deutschkurse/deutschwarumnicht/serie1/eng/DWN_Englisch_Serie1_Lektion25.mp3" length="6637926" type="audio/mpeg"/>
+      <guid isPermalink="false">https://radiodownloaddw-a.akamaihd.net/Events/dwelle/deutschkurse/deutschwarumnicht/serie1/eng/DWN_Englisch_Serie1_Lektion25.mp3</guid>
+      <pubDate>Sat, 29 Aug 2009 00:00:00 +0000</pubDate>
+      <itunes:season>1</itunes:season>
+      <itunes:episode>25</itunes:episode>
+      <itunes:duration>829</itunes:duration>
+      <description>DWN1 Lektion 25 text: https://static.dw.com/downloads/25629317/eng1-25.pdf</description>
+    </item>
+    <item>
+      <title>DWN1 Lektion 26 - It’s on me</title>
+      <link>https://learngerman.dw.com/en/chapter-26-its-on-me/a-219699</link>
+      <enclosure url="https://radiodownloaddw-a.akamaihd.net/Events/dwelle/deutschkurse/deutschwarumnicht/serie1/eng/DWN_Englisch_Serie1_Lektion26.mp3" length="6730304" type="audio/mpeg"/>
+      <guid isPermalink="false">https://radiodownloaddw-a.akamaihd.net/Events/dwelle/deutschkurse/deutschwarumnicht/serie1/eng/DWN_Englisch_Serie1_Lektion26.mp3</guid>
+      <pubDate>Fri, 28 Aug 2009 00:00:00 +0000</pubDate>
+      <itunes:season>1</itunes:season>
+      <itunes:episode>26</itunes:episode>
+      <itunes:duration>841</itunes:duration>
+      <description>DWN1 Lektion 26 text: https://static.dw.com/downloads/25629329/dwn_I_26.pdf</description>
+    </item>
+  </channel>
+</rss>
